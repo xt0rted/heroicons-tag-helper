@@ -15,15 +15,11 @@ namespace IconSourceGenerator
             return string.Join("", paths);
         }
 
-        public static (int width, int height) GetSize(string icon)
+        public static string GetViewBox(string icon)
         {
-            var match = Regex.Match(icon, "viewBox=\"(\\d+) (\\d+) (?<width>\\d+) (?<height>\\d+)\"", RegexOptions.Compiled);
+            var match = Regex.Match(icon, "viewBox=\"(?<viewbox>[^\"]+)\"", RegexOptions.Compiled);
 
-            return
-            (
-                width: Convert.ToInt32(match.Groups["width"].Value),
-                height: Convert.ToInt32(match.Groups["height"].Value)
-            );
+            return match.Groups["viewbox"].Value;
         }
     }
 }

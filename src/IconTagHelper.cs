@@ -37,7 +37,7 @@ namespace Tailwind.Heroicons
                 output.Attributes.Add("stroke", "currentColor");
             }
 
-            output.Attributes.Add("viewbox", $"0 0 {icon.Width:N0} {icon.Height:N0}");
+            output.Attributes.Add("viewbox", icon.ViewBox);
 
             output.Content.AppendHtml(icon.Path);
         }

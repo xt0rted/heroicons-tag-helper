@@ -112,14 +112,13 @@ namespace Tailwind.Heroicons
                 {
                     var file = icon.File.GetText(context.CancellationToken).ToString();
                     var path = IconExtractor.GetPaths(file);
-                    var (width, height) = IconExtractor.GetSize(file);
+                    var viewBox = IconExtractor.GetViewBox(file);
 
                     source.AppendLine("                case IconSymbol." + icon.ClassName + ":");
                     source.AppendLine("                    return new Icon");
                     source.AppendLine("                    {");
                     source.Append("                        Path = \"").Append(path.Replace("\"", "\\\"")).AppendLine("\",");
-                    source.Append("                        Width = ").Append(width.ToString("N0")).AppendLine(",");
-                    source.Append("                        Height = ").Append(height.ToString("N0")).AppendLine(",");
+                    source.Append("                        ViewBox = \"").Append(viewBox).AppendLine("\",");
                     source.AppendLine("                    };");
                     source.AppendLine("");
                 }
@@ -137,8 +136,7 @@ namespace Tailwind.Heroicons
     public class Icon
     {
         public string Path { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public string ViewBox { get; set; }
     }
 }
 ");
