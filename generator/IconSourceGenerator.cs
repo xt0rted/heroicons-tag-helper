@@ -38,7 +38,6 @@ namespace IconSourceGenerator
         {
             var icons = LoadIcons(context);
 
-            BuildStyleEnum(context, icons);
             BuildSymbolEnum(context, icons);
             BuildIconListClass(context, icons);
         }
@@ -64,28 +63,6 @@ namespace IconSourceGenerator
                 })
                 .GroupBy(g => g.Style)
                 .ToDictionary(k => k.Key, k => k.ToList());
-
-        private void BuildStyleEnum(GeneratorExecutionContext context, Dictionary<string, List<IconDetails>> icons)
-        {
-            var source = new StringBuilder(@"
-namespace Tailwind.Heroicons
-{
-    public enum IconStyles
-    {
-");
-            foreach (var icon in icons)
-            {
-                source.Append("        ");
-                source.Append(icon.Key);
-                source.AppendLine(",");
-            }
-
-            source.AppendLine(@"
-    }
-}");
-
-            context.AddSource("IconStylesEnum", SourceText.From(source.ToString(), Encoding.UTF8));
-        }
 
         private void BuildSymbolEnum(GeneratorExecutionContext context, Dictionary<string, List<IconDetails>> icons)
         {
