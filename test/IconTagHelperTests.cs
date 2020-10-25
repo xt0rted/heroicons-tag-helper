@@ -28,7 +28,6 @@ namespace Tailwind.Heroicons
             output.TagMode.ShouldBe(TagMode.StartTagAndEndTag);
             output.TagName.ShouldBe("svg");
             output.Attributes.ShouldContain(new TagHelperAttribute("aria-hidden", "true"));
-            output.Attributes.ShouldContain(new TagHelperAttribute("version", "1.1"));
             output.Attributes.ShouldContain(new TagHelperAttribute("viewbox", "0 0 24 24"));
         }
 
