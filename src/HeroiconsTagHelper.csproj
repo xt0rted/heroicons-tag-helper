@@ -1,34 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Tailwind.Heroicons</RootNamespace>
     <AssemblyName>HeroiconsTagHelper</AssemblyName>
-    <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="../node_modules/heroicons/outline/*.svg;../node_modules/heroicons/solid/*.svg">
+      <LinkBase>Icons</LinkBase>
+    </AdditionalFiles>
+  </ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Icons.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Icons.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Icons.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Icons.tt</DependentUpon>
-    </Compile>
+    <ProjectReference Include="..\generator\IconSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,6 @@
 {
   "name": "heroicons-tag-helper",
   "private": true,
-  "scripts": {
-    "build": "node script/build-data.js"
-  },
   "devDependencies": {
     "heroicons": "^0.4.2"
   }

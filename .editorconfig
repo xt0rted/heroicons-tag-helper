@@ -9,6 +9,9 @@ trim_trailing_whitespace = true
 [*.{cs,cshtml}]
 indent_size = 4
 
-[*.{js,ts}]
-indent_size = 2
-end_of_line = lf
+# Dotnet code style settings:
+[*.cs]
+# Add a blank line between using and Import directives based on their name
+dotnet_separate_import_directive_groups = true
+# Sort using and Import directives with System.* appearing first
+dotnet_sort_system_directives_first = true
