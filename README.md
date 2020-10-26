@@ -1,6 +1,18 @@
 # heroicons-tag-helper
 
+[![GitHub Package Registry](https://img.shields.io/badge/github-package_registry-yellow?logo=nuget)](https://nuget.pkg.github.com/xt0rted/index.json)
+[![Project license](https://img.shields.io/github/license/xt0rted/heroicons-tag-helper)](LICENSE)
+
 ASP.NET tag helper for adding [Heroicons](https://heroicons.com/) to your razor views.
+
+## Installation
+
+```terminal
+dotnet add package HeroiconsTagHelper
+```
+
+CI builds can be downloaded from the [packages page](https://github.com/xt0rted/heroicons-tag-helper/packages/473445) or the GitHub feed.
+They're also available as build artifacts on every PR.
 
 ## Setup
 

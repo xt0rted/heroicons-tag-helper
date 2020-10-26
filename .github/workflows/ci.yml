@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  DOTNET_NOLOGO: true
+  NODE_VERSION: "14.x"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2.3.3
+
+      - name: Build pr suffix
+        if: github.event_name == 'pull_request'
+        run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
+
+      - name: Build ci suffix
+        if: github.event_name == 'push'
+        run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
+
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup .NET Core (3.1.x)
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Setup .NET Core (global.json)
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          source-url: https://nuget.pkg.github.com/xt0rted/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm ci
+
+      - run: dotnet build --configuration Release
+
+      - run: dotnet test --configuration Release --no-build
+
+      - run: dotnet pack --configuration Release --output ./artifacts --version-suffix $VERSION_SUFFIX
+
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v2.2.0
+        with:
+          path: ./artifacts/*
+
+      - name: Publish to GPR
+        if: github.event_name == 'push'
+        run: dotnet nuget push ./artifacts/*.nupkg --no-symbols true --api-key ${{ secrets.GITHUB_TOKEN }}
