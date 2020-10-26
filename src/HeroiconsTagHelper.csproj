@@ -24,6 +24,12 @@
     <None Include="../assets/logo.png" Pack="true" PackagePath="">
       <LinkBase>assets</LinkBase>
     </None>
+    <None Include="../LICENSE" Pack="true" PackagePath="">
+      <LinkBase>assets</LinkBase>
+    </None>
+    <None Include="../node_modules/heroicons/LICENSE" Pack="true" PackagePath="Heroicons">
+      <LinkBase>assets/heroicons</LinkBase>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
