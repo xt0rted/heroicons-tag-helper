@@ -38,6 +38,10 @@ jobs:
 
       - name: Setup .NET Core (global.json)
         uses: actions/setup-dotnet@v1.7.2
+        with:
+          source-url: https://nuget.pkg.github.com/xt0rted/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm ci
 
@@ -51,3 +55,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.0
         with:
           path: ./artifacts/*
+
+      - name: Publish to GPR
+        if: github.event_name == 'push'
+        run: dotnet nuget push ./artifacts/*.nupkg --no-symbols true --api-key ${{ secrets.GITHUB_TOKEN }}
