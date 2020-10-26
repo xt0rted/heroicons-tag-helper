@@ -8,10 +8,15 @@
 
   <PropertyGroup>
     <Description>ASP.NET tag helper for adding Heroicons to your razor views</Description>
+    <Deterministic>true</Deterministic>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
     <PackageBaseTags>Heroicons;Icons;Tailwind;TailwindCSS;TagHelper;TagHelpers</PackageBaseTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>See https://github.com/xt0rted/heroicons-tag-helper/releases for more info</PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,6 +39,10 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

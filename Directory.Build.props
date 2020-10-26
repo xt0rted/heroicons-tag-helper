@@ -11,4 +11,8 @@
     <Authors>Brian Surowiec</Authors>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
 </Project>
