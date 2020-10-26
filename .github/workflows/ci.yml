@@ -18,6 +18,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2.3.3
 
+      - name: Build pr suffix
+        if: github.event_name == 'pull_request'
+        run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
+
+      - name: Build ci suffix
+        if: github.event_name == 'push'
+        run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
+
       - name: Setup Node
         uses: actions/setup-node@v2.1.1
         with:
@@ -37,9 +45,9 @@ jobs:
 
       - run: dotnet test --configuration Release --no-build
 
-      - run: dotnet pack --configuration Release --output artifacts
+      - run: dotnet pack --configuration Release --output ./artifacts --version-suffix $VERSION_SUFFIX
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v2.2.0
         with:
-          path: artifacts/*
+          path: ./artifacts/*
