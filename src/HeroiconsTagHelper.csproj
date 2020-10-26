@@ -14,7 +14,7 @@
     <PackageBaseTags>Heroicons;Icons;Tailwind;TailwindCSS;TagHelper;TagHelpers</PackageBaseTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>See https://github.com/xt0rted/heroicons-tag-helper/releases for more info</PackageReleaseNotes>
+    <PackageReleaseNotes>See https://github.com/xt0rted/heroicons-tag-helper/blob/main/CHANGELOG.md for more info</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
