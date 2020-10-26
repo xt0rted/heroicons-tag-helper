@@ -4,12 +4,19 @@
     <RootNamespace>Tailwind.Heroicons</RootNamespace>
     <AssemblyName>HeroiconsTagHelper</AssemblyName>
     <IsPackable>true</IsPackable>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="../node_modules/heroicons/outline/*.svg;../node_modules/heroicons/solid/*.svg">
-      <LinkBase>Icons</LinkBase>
+      <LinkBase>icons</LinkBase>
     </AdditionalFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../assets/logo.png" Pack="true" PackagePath="">
+      <LinkBase>assets</LinkBase>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
