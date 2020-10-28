@@ -23,6 +23,32 @@ In your `_ViewImports.cshtml` add:
 @addTagHelper *, HeroiconsTagHelper
 ```
 
+In your `Startup.cs` add:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddHeroicons(Configuration);
+}
+```
+
+In your `appsettings.json` add:
+
+```json
+{
+  "Heroicons": {
+    "IncludeComments": true
+  }
+}
+
+```
+
+## Settings
+
+### IncludeComments
+
+Setting this to `true` will add an html comment before the svg tag with the style and name of the icon to help make development/debugging easier.
+
 ## Usage
 
 There are two versions of the tag helper which are used to pick between the `outline` and `solid` icon styles.
