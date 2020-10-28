@@ -1,4 +1,4 @@
-namespace Tailwind.Heroicons
+﻿namespace Tailwind.Heroicons
 {
     using Shouldly;
 

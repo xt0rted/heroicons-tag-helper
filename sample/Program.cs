@@ -1,4 +1,4 @@
-namespace Sample
+﻿namespace Sample
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;

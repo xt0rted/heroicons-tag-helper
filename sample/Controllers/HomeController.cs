@@ -1,4 +1,4 @@
-namespace Sample.Controllers
+﻿namespace Sample.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 

@@ -1,4 +1,4 @@
-namespace IconSourceGenerator
+﻿namespace IconSourceGenerator
 {
     using System;
     using System.Linq;

@@ -1,4 +1,4 @@
-namespace IconSourceGenerator
+﻿namespace IconSourceGenerator
 {
     using System;
     using System.Collections.Generic;
@@ -117,6 +117,7 @@ namespace Tailwind.Heroicons
                     source.AppendLine("                case IconSymbol." + icon.ClassName + ":");
                     source.AppendLine("                    return new Icon");
                     source.AppendLine("                    {");
+                    source.Append("                        Name = \"").Append(icon.Name).AppendLine("\",");
                     source.Append("                        Path = \"").Append(path.Replace("\"", "\\\"")).AppendLine("\",");
                     source.Append("                        ViewBox = \"").Append(viewBox).AppendLine("\",");
                     source.AppendLine("                    };");
@@ -135,6 +136,7 @@ namespace Tailwind.Heroicons
 
     public class Icon
     {
+        public string Name { get; set; }
         public string Path { get; set; }
         public string ViewBox { get; set; }
     }

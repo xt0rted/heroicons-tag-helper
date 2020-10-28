@@ -1,10 +1,11 @@
-namespace Tailwind.Heroicons
+﻿namespace Tailwind.Heroicons
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Razor.TagHelpers;
+    using Microsoft.Extensions.Options;
 
     using Shouldly;
 
@@ -19,7 +20,8 @@ namespace Tailwind.Heroicons
             var context = MakeTagHelperContext(tagName: "heroicon-outline");
             var output = MakeTagHelperOutput(tagName: "heroicon-outline");
 
-            var helper = new IconTagHelper();
+            var options = Options.Create(new HeroiconOptions());
+            var helper = new IconTagHelper(options);
 
             // When
             helper.Process(context, output);
@@ -41,7 +43,8 @@ namespace Tailwind.Heroicons
             var context = MakeTagHelperContext(tagName);
             var output = MakeTagHelperOutput(tagName);
 
-            var helper = new IconTagHelper
+            var options = Options.Create(new HeroiconOptions());
+            var helper = new IconTagHelper(options)
             {
                 Icon = IconSymbol.Bell
             };
@@ -66,7 +69,8 @@ namespace Tailwind.Heroicons
             var context = MakeTagHelperContext(tagName);
             var output = MakeTagHelperOutput(tagName);
 
-            var helper = new IconTagHelper
+            var options = Options.Create(new HeroiconOptions());
+            var helper = new IconTagHelper(options)
             {
                 Icon = IconSymbol.Bell
             };
@@ -101,7 +105,8 @@ namespace Tailwind.Heroicons
                     { attributeName, attributeValue },
                 });
 
-            var helper = new IconTagHelper
+            var options = Options.Create(new HeroiconOptions());
+            var helper = new IconTagHelper(options)
             {
                 Icon = IconSymbol.Bell
             };
@@ -111,6 +116,52 @@ namespace Tailwind.Heroicons
 
             // Then
             output.Attributes.ShouldContain(new TagHelperAttribute(attributeName, attributeValue));
+        }
+
+        [Fact]
+        public void Should_not_include_html_comment_when_IncludeComments_is_false()
+        {
+            // Given
+            var context = MakeTagHelperContext(tagName: "heroicon-outline");
+            var output = MakeTagHelperOutput(tagName: "heroicon-outline");
+
+            var options = Options.Create(new HeroiconOptions
+            {
+                IncludeComments = false,
+            });
+            var helper = new IconTagHelper(options)
+            {
+                Icon = IconSymbol.Bell,
+            };
+
+            // When
+            helper.Process(context, output);
+
+            // Then
+            output.PreElement.GetContent().ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Should_include_html_comment_when_IncludeComments_is_true()
+        {
+            // Given
+            var context = MakeTagHelperContext(tagName: "heroicon-outline");
+            var output = MakeTagHelperOutput(tagName: "heroicon-outline");
+
+            var options = Options.Create(new HeroiconOptions
+            {
+                IncludeComments = true,
+            });
+            var helper = new IconTagHelper(options)
+            {
+                Icon = IconSymbol.Bell,
+            };
+
+            // When
+            helper.Process(context, output);
+
+            // Then
+            output.PreElement.GetContent().ShouldBe("<!-- Heroicon name: outline bell -->");
         }
 
         private static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList attributes = null)
