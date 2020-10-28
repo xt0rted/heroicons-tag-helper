@@ -1,6 +1,7 @@
 # heroicons-tag-helper
 
 [![CI build status](https://github.com/xt0rted/heroicons-tag-helper/workflows/CI/badge.svg)](https://github.com/xt0rted/heroicons-tag-helper/actions?query=workflow%3ACI)
+[![NuGet Package](https://img.shields.io/nuget/v/HeroiconsTagHelper?logo=nuget)](https://www.nuget.org/packages/HeroiconsTagHelper)
 [![GitHub Package Registry](https://img.shields.io/badge/github-package_registry-yellow?logo=nuget)](https://nuget.pkg.github.com/xt0rted/index.json)
 [![Project license](https://img.shields.io/github/license/xt0rted/heroicons-tag-helper)](LICENSE)
 
