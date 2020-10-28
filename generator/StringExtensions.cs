@@ -1,4 +1,4 @@
-namespace IconSourceGenerator
+﻿namespace IconSourceGenerator
 {
     internal static class StringExtensions
     {
