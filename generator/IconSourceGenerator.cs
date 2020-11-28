@@ -61,6 +61,7 @@
                         Style = iconStyle,
                     };
                 })
+                .OrderBy(o => o.Style).ThenBy(o => o.Name)
                 .GroupBy(g => g.Style)
                 .ToDictionary(k => k.Key, k => k.ToList());
 
