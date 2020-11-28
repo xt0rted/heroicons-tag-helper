@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Text;
 
     using Microsoft.CodeAnalysis;
@@ -12,7 +13,7 @@
     [Generator]
     public class IconSourceGenerator : ISourceGenerator
     {
-        private static DiagnosticDescriptor _errorDescriptor = new DiagnosticDescriptor(
+        private static readonly DiagnosticDescriptor _errorDescriptor = new DiagnosticDescriptor(
 #pragma warning disable RS2008 // Enable analyzer release tracking
             "SI0000",
 #pragma warning restore RS2008 // Enable analyzer release tracking
@@ -34,6 +35,7 @@
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         private void ExecuteInternal(GeneratorExecutionContext context)
         {
             var icons = LoadIcons(context);
@@ -48,8 +50,13 @@
                 .Where(at => at.Path.EndsWith(".svg", StringComparison.InvariantCultureIgnoreCase))
                 .Select(file =>
                 {
+                    var options = context.AnalyzerConfigOptions.GetOptions(file);
+                    if (!options.TryGetValue("build_metadata.AdditionalFiles.IconStyle", out var iconStyle))
+                    {
+                        throw new Exception("IconStyle not specified for file " + file.Path);
+                    }
+
                     var directory = Path.GetDirectoryName(file.Path);
-                    var iconStyle = new DirectoryInfo(directory).Name.FirstCharToUpper();
                     var name = Path.GetFileNameWithoutExtension(file.Path);
 
                     return new IconDetails
@@ -103,7 +110,7 @@ namespace Tailwind.Heroicons
             foreach (var style in icons)
             {
                 source.Append("        public static Icon ");
-                source.Append(style.Key);
+                source.Append(style.Key.FirstCharToUpper());
                 source.AppendLine(@"(IconSymbol symbol)
         {
             switch (symbol)
@@ -149,6 +156,7 @@ namespace Tailwind.Heroicons
 
         public void Initialize(GeneratorInitializationContext context)
         {
+            // System.Diagnostics.Debugger.Launch();
         }
     }
 }
