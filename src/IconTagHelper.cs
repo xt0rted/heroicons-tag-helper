@@ -19,6 +19,9 @@
         [HtmlAttributeName("icon")]
         public IconSymbol Icon { get; set; }
 
+        [HtmlAttributeName("stroke-width")]
+        public string StrokeWidth { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (context is null) throw new ArgumentNullException(nameof(context));
@@ -28,7 +31,7 @@
 
             var icon = isSolid
                 ? IconList.Solid(Icon)
-                : IconList.Outline(Icon);
+                : IconList.Outline(Icon, StrokeWidth);
 
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "svg";

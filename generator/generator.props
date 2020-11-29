@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="IconStyle" />
+    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="UsesStroke" />
   </ItemGroup>
 
   <Target Name="_CleanupRoslynAdditionalFiles" BeforeTargets="GenerateMSBuildEditorConfigFileShouldRun">

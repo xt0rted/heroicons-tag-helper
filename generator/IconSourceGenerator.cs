@@ -56,6 +56,9 @@
                         throw new Exception("IconStyle not specified for file " + file.Path);
                     }
 
+                    context.AnalyzerConfigOptions.GetOptions(file).TryGetValue("build_metadata.AdditionalFiles.UsesStroke", out var usesStrokeValue);
+                    bool.TryParse(usesStrokeValue, out var usesStroke);
+
                     var directory = Path.GetDirectoryName(file.Path);
                     var name = Path.GetFileNameWithoutExtension(file.Path);
 
@@ -66,6 +69,7 @@
                         Name = name,
                         Path = file.Path,
                         Style = iconStyle,
+                        UsesStroke = usesStroke,
                     };
                 })
                 .OrderBy(o => o.Style).ThenBy(o => o.Name)
@@ -111,7 +115,14 @@ namespace Tailwind.Heroicons
             {
                 source.Append("        public static Icon ");
                 source.Append(style.Key.FirstCharToUpper());
-                source.AppendLine(@"(IconSymbol symbol)
+                source.Append("(IconSymbol symbol");
+
+                if (style.Value.Any(i => i.UsesStroke))
+                {
+                    source.Append(", string strokeWidth = null");
+                }
+
+                source.AppendLine(@")
         {
             switch (symbol)
             {");
@@ -122,11 +133,19 @@ namespace Tailwind.Heroicons
                     var path = IconExtractor.GetPaths(file);
                     var viewBox = IconExtractor.GetViewBox(file);
 
+                    // Escape the path string before replacing the stroke-width attribute so we can more easily use format strings for it
+                    path = path.Replace("\"", "\\\"");
+
+                    if (icon.UsesStroke)
+                    {
+                        path = IconExtractor.ConfigureStrokeWidth(path);
+                    }
+
                     source.AppendLine("                case IconSymbol." + icon.ClassName + ":");
                     source.AppendLine("                    return new Icon");
                     source.AppendLine("                    {");
                     source.Append("                        Name = \"").Append(icon.Name).AppendLine("\",");
-                    source.Append("                        Path = \"").Append(path.Replace("\"", "\\\"")).AppendLine("\",");
+                    source.Append("                        Path = ").Append(icon.UsesStroke ? "$" : "").Append("\"").Append(path).AppendLine("\",");
                     source.Append("                        ViewBox = \"").Append(viewBox).AppendLine("\",");
                     source.AppendLine("                    };");
                     source.AppendLine("");

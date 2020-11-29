@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="../node_modules/heroicons/outline/*.svg" IconStyle="outline">
+    <AdditionalFiles Include="../node_modules/heroicons/outline/*.svg" IconStyle="outline" UsesStroke="true">
       <LinkBase>icons/outline</LinkBase>
     </AdditionalFiles>
     <AdditionalFiles Include="../node_modules/heroicons/solid/*.svg" IconStyle="solid">
