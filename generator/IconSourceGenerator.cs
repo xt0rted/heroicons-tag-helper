@@ -141,7 +141,7 @@ namespace Tailwind.Heroicons
                         path = IconExtractor.ConfigureStrokeWidth(path);
                     }
 
-                    source.AppendLine("                case IconSymbol." + icon.ClassName + ":");
+                    source.Append("                case IconSymbol.").Append(icon.ClassName).AppendLine(":");
                     source.AppendLine("                    return new Icon");
                     source.AppendLine("                    {");
                     source.Append("                        Name = \"").Append(icon.Name).AppendLine("\",");
