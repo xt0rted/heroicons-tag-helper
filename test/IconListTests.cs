@@ -18,6 +18,16 @@
         }
 
         [Fact]
+        public void Should_return_the_ArrowCircleDown_icon_in_the_outline_style_with_a_custom_stroke_width()
+        {
+            // Given / When
+            var icon = IconList.Outline(IconSymbol.ArrowCircleDown, strokeWidth: "0.5");
+
+            // Then
+            icon.Path.ShouldBe("<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"0.5\" d=\"M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z\"/>");
+        }
+
+        [Fact]
         public void Should_return_the_ArrowCircleDown_icon_in_the_solid_style()
         {
             // Given

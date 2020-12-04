@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Text;
 
     using Microsoft.CodeAnalysis;
@@ -12,7 +13,7 @@
     [Generator]
     public class IconSourceGenerator : ISourceGenerator
     {
-        private static DiagnosticDescriptor _errorDescriptor = new DiagnosticDescriptor(
+        private static readonly DiagnosticDescriptor _errorDescriptor = new DiagnosticDescriptor(
 #pragma warning disable RS2008 // Enable analyzer release tracking
             "SI0000",
 #pragma warning restore RS2008 // Enable analyzer release tracking
@@ -34,6 +35,7 @@
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         private void ExecuteInternal(GeneratorExecutionContext context)
         {
             var icons = LoadIcons(context);
@@ -48,8 +50,16 @@
                 .Where(at => at.Path.EndsWith(".svg", StringComparison.InvariantCultureIgnoreCase))
                 .Select(file =>
                 {
+                    var options = context.AnalyzerConfigOptions.GetOptions(file);
+                    if (!options.TryGetValue("build_metadata.AdditionalFiles.IconStyle", out var iconStyle))
+                    {
+                        throw new Exception($"IconStyle not specified for file {file.Path}");
+                    }
+
+                    context.AnalyzerConfigOptions.GetOptions(file).TryGetValue("build_metadata.AdditionalFiles.UsesStroke", out var usesStrokeValue);
+                    bool.TryParse(usesStrokeValue, out var usesStroke);
+
                     var directory = Path.GetDirectoryName(file.Path);
-                    var iconStyle = new DirectoryInfo(directory).Name.FirstCharToUpper();
                     var name = Path.GetFileNameWithoutExtension(file.Path);
 
                     return new IconDetails
@@ -59,8 +69,10 @@
                         Name = name,
                         Path = file.Path,
                         Style = iconStyle,
+                        UsesStroke = usesStroke,
                     };
                 })
+                .OrderBy(o => o.Style).ThenBy(o => o.Name)
                 .GroupBy(g => g.Style)
                 .ToDictionary(k => k.Key, k => k.ToList());
 
@@ -102,8 +114,15 @@ namespace Tailwind.Heroicons
             foreach (var style in icons)
             {
                 source.Append("        public static Icon ");
-                source.Append(style.Key);
-                source.AppendLine(@"(IconSymbol symbol)
+                source.Append(style.Key.FirstCharToUpper());
+                source.Append("(IconSymbol symbol");
+
+                if (style.Value.Any(i => i.UsesStroke))
+                {
+                    source.Append(", string strokeWidth = null");
+                }
+
+                source.AppendLine(@")
         {
             switch (symbol)
             {");
@@ -114,11 +133,19 @@ namespace Tailwind.Heroicons
                     var path = IconExtractor.GetPaths(file);
                     var viewBox = IconExtractor.GetViewBox(file);
 
-                    source.AppendLine("                case IconSymbol." + icon.ClassName + ":");
+                    // Escape the path string before replacing the stroke-width attribute so we can more easily use format strings for it
+                    path = path.Replace("\"", "\\\"");
+
+                    if (icon.UsesStroke)
+                    {
+                        path = IconExtractor.ConfigureStrokeWidth(path);
+                    }
+
+                    source.Append("                case IconSymbol.").Append(icon.ClassName).AppendLine(":");
                     source.AppendLine("                    return new Icon");
                     source.AppendLine("                    {");
                     source.Append("                        Name = \"").Append(icon.Name).AppendLine("\",");
-                    source.Append("                        Path = \"").Append(path.Replace("\"", "\\\"")).AppendLine("\",");
+                    source.Append("                        Path = ").Append(icon.UsesStroke ? "$" : "").Append("\"").Append(path).AppendLine("\",");
                     source.Append("                        ViewBox = \"").Append(viewBox).AppendLine("\",");
                     source.AppendLine("                    };");
                     source.AppendLine("");
@@ -148,6 +175,7 @@ namespace Tailwind.Heroicons
 
         public void Initialize(GeneratorInitializationContext context)
         {
+            // System.Diagnostics.Debugger.Launch();
         }
     }
 }

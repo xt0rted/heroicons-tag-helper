@@ -21,8 +21,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="../node_modules/heroicons/outline/*.svg;../node_modules/heroicons/solid/*.svg">
-      <LinkBase>icons</LinkBase>
+    <AdditionalFiles Include="../node_modules/heroicons/outline/*.svg" IconStyle="outline" UsesStroke="true">
+      <LinkBase>icons/outline</LinkBase>
+    </AdditionalFiles>
+    <AdditionalFiles Include="../node_modules/heroicons/solid/*.svg" IconStyle="solid">
+      <LinkBase>icons/solid</LinkBase>
     </AdditionalFiles>
   </ItemGroup>
 
@@ -47,7 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\generator\IconSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="../generator/IconSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
+
+  <Import Project="../generator/generator.props" />
 
 </Project>

@@ -1,0 +1,16 @@
+﻿<Project>
+
+  <ItemGroup>
+    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="IconStyle" />
+    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="UsesStroke" />
+  </ItemGroup>
+
+  <Target Name="_CleanupRoslynAdditionalFiles" BeforeTargets="GenerateMSBuildEditorConfigFileShouldRun">
+    <ItemGroup>
+      <_AdditionalFilesCleanup Include="@(AdditionalFiles)" />
+      <AdditionalFiles Remove="@(_AdditionalFilesCleanup)" />
+      <AdditionalFiles Include="@(_AdditionalFilesCleanup->'$([System.IO.Path]::GetFullPath('%(_AdditionalFilesCleanup.Identity)'))')" />
+    </ItemGroup>
+  </Target>
+
+</Project>
