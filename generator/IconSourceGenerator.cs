@@ -53,7 +53,7 @@
                     var options = context.AnalyzerConfigOptions.GetOptions(file);
                     if (!options.TryGetValue("build_metadata.AdditionalFiles.IconStyle", out var iconStyle))
                     {
-                        throw new Exception("IconStyle not specified for file " + file.Path);
+                        throw new Exception($"IconStyle not specified for file {file.Path}");
                     }
 
                     context.AnalyzerConfigOptions.GetOptions(file).TryGetValue("build_metadata.AdditionalFiles.UsesStroke", out var usesStrokeValue);
