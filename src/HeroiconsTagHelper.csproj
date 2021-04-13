@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Tailwind.Heroicons</RootNamespace>
     <AssemblyName>HeroiconsTagHelper</AssemblyName>
+    <RootNamespace>Tailwind.Heroicons</RootNamespace>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
@@ -10,14 +12,12 @@
     <Description>ASP.NET tag helper for adding Heroicons to your razor views</Description>
     <Deterministic>true</Deterministic>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>See https://github.com/xt0rted/heroicons-tag-helper/blob/main/CHANGELOG.md for more info</PackageReleaseNotes>
     <PackageTags>Heroicons;Icons;Tailwind;TailwindCSS;TagHelper;TagHelpers</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryBranch>main</RepositoryBranch>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
