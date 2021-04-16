@@ -41,7 +41,6 @@ In your `appsettings.json` add:
     "IncludeComments": true
   }
 }
-
 ```
 
 ## Settings
