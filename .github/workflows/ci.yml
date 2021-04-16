@@ -43,7 +43,7 @@ jobs:
       - name: Publish artifacts
         uses: actions/upload-artifact@v2.2.3
         with:
-          path: ./artifacts/*
+          path: ./artifacts/*.nupkg
 
       - name: Publish to GPR
         run: |
