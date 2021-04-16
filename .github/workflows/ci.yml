@@ -27,7 +27,7 @@ jobs:
       - name: Setup .NET Core (3.1.x)
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: "3.1.x"
 
       - name: Setup .NET Core (global.json)
         uses: actions/setup-dotnet@v1.7.2
@@ -43,7 +43,7 @@ jobs:
       - name: Publish artifacts
         uses: actions/upload-artifact@v2.2.3
         with:
-          path: ./artifacts/*
+          path: ./artifacts/*.nupkg
 
       - name: Publish to GPR
         run: |

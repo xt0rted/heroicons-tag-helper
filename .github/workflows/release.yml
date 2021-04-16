@@ -1,6 +1,9 @@
-name: Pull Request
+name: Release
 
-on: pull_request
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 env:
   DOTNET_NOLOGO: true
@@ -13,9 +16,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.3.4
-
-      - name: Build version suffix
-        run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Setup Node
         uses: actions/setup-node@v2.1.5
@@ -36,9 +36,28 @@ jobs:
 
       - run: dotnet test --configuration Release --no-build
 
-      - run: dotnet pack --configuration Release --output ./artifacts --version-suffix $VERSION_SUFFIX
+      - run: dotnet pack --configuration Release --output ./artifacts
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v2.2.3
         with:
           path: ./artifacts/*.nupkg
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: ./artifacts/*.nupkg
+
+      - name: Publish to GPR
+        run: |
+          dotnet nuget push "./artifacts/*.nupkg" \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --source https://nuget.pkg.github.com/${{ github.repository_owner }}
+
+      - name: Publish to nuget.org
+        run: |
+          dotnet nuget push "./artifacts/*.nupkg" \
+            --api-key ${{ secrets.NUGET_TOKEN }} \
+            --source https://api.nuget.org/v3/index.json
