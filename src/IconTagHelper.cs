@@ -38,8 +38,6 @@
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "svg";
 
-            output.Attributes.Add("aria-hidden", "true");
-
             if (isSolid)
             {
                 output.Attributes.SetAttribute("fill", "currentColor");

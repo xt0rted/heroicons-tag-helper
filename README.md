@@ -48,7 +48,12 @@ In your `appsettings.json` add:
 Name | Default Value | Description
 :-- | :-- | :--
 `IncludeComments` | `false` | Add an html comment before the svg tag with the style and name of the icon to help make development/debugging easier.
+`SetAccessibilityAttributes` | `false` | Adds various accessibility attributes based on the default state of the tag.
 `SetFocusableAttribute` | `false` | Adds the `focusable` attribute set to `false` to prevent the icon from receiving focus in Internet Explorer and Edge Legacy.
+
+### SetAccessibilityAttributes
+
+If `aria-label` or `aria-labeledby` are set then the icon is being used as an image so [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img#svg_and_roleimg) will be added to the svg tag, otherwise [`aria-hidden="true"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-hidden_attribute) will be added.
 
 ## Usage
 

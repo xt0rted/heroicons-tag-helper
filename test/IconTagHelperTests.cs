@@ -25,7 +25,6 @@
             // Then
             output.TagMode.ShouldBe(TagMode.StartTagAndEndTag);
             output.TagName.ShouldBe("svg");
-            AssertAttributeValue(output.Attributes, "aria-hidden", "true");
             AssertAttributeValue(output.Attributes, "viewbox", "0 0 24 24");
         }
 
