@@ -34,6 +34,76 @@
             AssertAttributeValue(output.Attributes, "viewbox", "0 0 24 24");
         }
 
+        [Fact]
+        public void Should_overwrite_existing_attributes_for_solid_style()
+        {
+            // Given
+            var context = MakeTagHelperContext(
+                tagName: "heroicon-solid",
+                new TagHelperAttributeList
+                {
+                    { "fill", "blue" },
+                    { "viewbox", "0 0 1 1" },
+                });
+            var output = MakeTagHelperOutput(
+                tagName: "heroicon-solid",
+                new TagHelperAttributeList
+                {
+                    { "fill", "blue" },
+                    { "viewbox", "0 0 1 1" },
+                });
+
+            var options = Options.Create(new HeroiconOptions());
+            var helper = new IconTagHelper(options)
+            {
+                Icon = IconSymbol.Bell,
+            };
+
+            // When
+            helper.Process(context, output);
+
+            // Then
+            AssertAttributeValue(output.Attributes, "fill", "currentColor");
+            AssertAttributeValue(output.Attributes, "viewbox", "0 0 20 20");
+            output.Attributes.ShouldNotContain(a => a.Name == "stroke");
+        }
+
+        [Fact]
+        public void Should_overwrite_existing_attributes_for_outline_style()
+        {
+            // Given
+            var context = MakeTagHelperContext(
+                tagName: "heroicon-outline",
+                new TagHelperAttributeList
+                {
+                    { "fill", "blue" },
+                    { "stroke", "blue" },
+                    { "viewbox", "0 0 1 1" },
+                });
+            var output = MakeTagHelperOutput(
+                tagName: "heroicon-outline",
+                new TagHelperAttributeList
+                {
+                    { "fill", "blue" },
+                    { "stroke", "blue" },
+                    { "viewbox", "0 0 1 1" },
+                });
+
+            var options = Options.Create(new HeroiconOptions());
+            var helper = new IconTagHelper(options)
+            {
+                Icon = IconSymbol.Bell,
+            };
+
+            // When
+            helper.Process(context, output);
+
+            // Then
+            AssertAttributeValue(output.Attributes, "fill", "none");
+            AssertAttributeValue(output.Attributes, "stroke", "currentColor");
+            AssertAttributeValue(output.Attributes, "viewbox", "0 0 24 24");
+        }
+
         [Theory]
         [InlineData("heroicon-outline")]
         [InlineData("Heroicon-Outline")]

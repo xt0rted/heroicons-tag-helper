@@ -40,15 +40,15 @@
 
             if (isSolid)
             {
-                output.Attributes.Add("fill", "currentColor");
+                output.Attributes.SetAttribute("fill", "currentColor");
             }
             else
             {
-                output.Attributes.Add("fill", "none");
-                output.Attributes.Add("stroke", "currentColor");
+                output.Attributes.SetAttribute("fill", "none");
+                output.Attributes.SetAttribute("stroke", "currentColor");
             }
 
-            output.Attributes.Add("viewbox", icon.ViewBox);
+            output.Attributes.SetAttribute("viewbox", icon.ViewBox);
 
             output.Content.AppendHtml(icon.Path);
 
