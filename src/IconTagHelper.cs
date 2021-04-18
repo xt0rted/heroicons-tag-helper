@@ -16,6 +16,8 @@
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
         }
 
+        public override int Order => 0;
+
         [HtmlAttributeName("icon")]
         public IconSymbol Icon { get; set; }
 

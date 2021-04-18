@@ -45,9 +45,10 @@ In your `appsettings.json` add:
 
 ## Settings
 
-### IncludeComments
-
-Setting this to `true` will add an html comment before the svg tag with the style and name of the icon to help make development/debugging easier.
+Name | Default Value | Description
+:-- | :-- | :--
+`IncludeComments` | `false` | Add an html comment before the svg tag with the style and name of the icon to help make development/debugging easier.
+`SetFocusableAttribute` | `false` | Adds the `focusable` attribute set to `false` to prevent the icon from receiving focus in Internet Explorer and Edge Legacy.
 
 ## Usage
 

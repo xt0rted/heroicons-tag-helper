@@ -1,10 +1,5 @@
 ﻿namespace Tailwind.Heroicons
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Razor.TagHelpers;
     using Microsoft.Extensions.Options;
 
@@ -12,14 +7,14 @@
 
     using Xunit;
 
-    public class IconTagHelperTests
+    public class IconTagHelperTests : TagHelperTestBase
     {
         [Fact]
         public void Should_set_svg_attributes()
         {
             // Given
-            var context = MakeTagHelperContext(tagName: "heroicon-outline");
-            var output = MakeTagHelperOutput(tagName: "heroicon-outline");
+            var context = MakeTagHelperContext("heroicon-outline");
+            var output = MakeTagHelperOutput("heroicon-outline");
 
             var options = Options.Create(new HeroiconOptions());
             var helper = new IconTagHelper(options);
@@ -39,14 +34,14 @@
         {
             // Given
             var context = MakeTagHelperContext(
-                tagName: "heroicon-solid",
+                "heroicon-solid",
                 new TagHelperAttributeList
                 {
                     { "fill", "blue" },
                     { "viewbox", "0 0 1 1" },
                 });
             var output = MakeTagHelperOutput(
-                tagName: "heroicon-solid",
+                "heroicon-solid",
                 new TagHelperAttributeList
                 {
                     { "fill", "blue" },
@@ -73,7 +68,7 @@
         {
             // Given
             var context = MakeTagHelperContext(
-                tagName: "heroicon-outline",
+                "heroicon-outline",
                 new TagHelperAttributeList
                 {
                     { "fill", "blue" },
@@ -81,7 +76,7 @@
                     { "viewbox", "0 0 1 1" },
                 });
             var output = MakeTagHelperOutput(
-                tagName: "heroicon-outline",
+                "heroicon-outline",
                 new TagHelperAttributeList
                 {
                     { "fill", "blue" },
@@ -164,13 +159,13 @@
         {
             // Given
             var context = MakeTagHelperContext(
-                tagName: "heroicon-solid",
+                "heroicon-solid",
                 new TagHelperAttributeList
                 {
                     { attributeName, attributeValue },
                 });
             var output = MakeTagHelperOutput(
-                tagName: "heroicon-solid",
+                "heroicon-solid",
                 new TagHelperAttributeList
                 {
                     { attributeName, attributeValue },
@@ -193,8 +188,8 @@
         public void Should_not_include_html_comment_when_IncludeComments_is_false()
         {
             // Given
-            var context = MakeTagHelperContext(tagName: "heroicon-outline");
-            var output = MakeTagHelperOutput(tagName: "heroicon-outline");
+            var context = MakeTagHelperContext("heroicon-outline");
+            var output = MakeTagHelperOutput("heroicon-outline");
 
             var options = Options.Create(new HeroiconOptions
             {
@@ -216,8 +211,8 @@
         public void Should_include_html_comment_when_IncludeComments_is_true()
         {
             // Given
-            var context = MakeTagHelperContext(tagName: "heroicon-outline");
-            var output = MakeTagHelperOutput(tagName: "heroicon-outline");
+            var context = MakeTagHelperContext("heroicon-outline");
+            var output = MakeTagHelperOutput("heroicon-outline");
 
             var options = Options.Create(new HeroiconOptions
             {
@@ -233,36 +228,6 @@
 
             // Then
             output.PreElement.GetContent().ShouldBe("<!-- Heroicon name: outline bell -->");
-        }
-
-        private static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList attributes = null)
-        {
-            attributes ??= new TagHelperAttributeList();
-
-            return new TagHelperContext(
-                tagName,
-                allAttributes: attributes,
-                items: new Dictionary<object, object>(),
-                uniqueId: Guid.NewGuid().ToString("N"));
-        }
-
-        private static TagHelperOutput MakeTagHelperOutput(string tagName, TagHelperAttributeList attributes = null)
-        {
-            attributes ??= new TagHelperAttributeList();
-
-            return new TagHelperOutput(
-                tagName,
-                attributes: attributes,
-                getChildContentAsync: (useCachedResult, encoder) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
-        }
-
-        private static void AssertAttributeValue(TagHelperAttributeList attributes, string name, string value)
-        {
-            attributes
-                .Count(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-                .ShouldBe(1);
-
-            attributes[name].Value.ShouldBe(value);
         }
     }
 }
