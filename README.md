@@ -9,6 +9,8 @@ ASP.NET tag helper for adding [Heroicons](https://heroicons.com/) to your razor 
 
 ## Installation
 
+> ℹ This package's version is aligned with the [heroicons NPM package](https://www.npmjs.com/package/heroicons) so you always know which version you're using.
+
 ```terminal
 dotnet add package HeroiconsTagHelper
 ```
