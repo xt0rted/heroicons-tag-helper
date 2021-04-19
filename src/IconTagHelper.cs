@@ -16,6 +16,8 @@
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
         }
 
+        public override int Order => 0;
+
         [HtmlAttributeName("icon")]
         public IconSymbol Icon { get; set; }
 
@@ -36,19 +38,17 @@
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "svg";
 
-            output.Attributes.Add("aria-hidden", "true");
-
             if (isSolid)
             {
-                output.Attributes.Add("fill", "currentColor");
+                output.Attributes.SetAttribute("fill", "currentColor");
             }
             else
             {
-                output.Attributes.Add("fill", "none");
-                output.Attributes.Add("stroke", "currentColor");
+                output.Attributes.SetAttribute("fill", "none");
+                output.Attributes.SetAttribute("stroke", "currentColor");
             }
 
-            output.Attributes.Add("viewbox", icon.ViewBox);
+            output.Attributes.SetAttribute("viewbox", icon.ViewBox);
 
             output.Content.AppendHtml(icon.Path);
 
