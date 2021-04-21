@@ -6,6 +6,7 @@ on:
       - "v*.*.*"
 
 permissions:
+  contents: write
   packages: write
 
 env:
