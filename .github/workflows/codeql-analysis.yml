@@ -5,6 +5,10 @@ on:
     branches: [main]
   schedule:
     - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  security-events: write
 
 env:
   DOTNET_NOLOGO: true
