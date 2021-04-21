@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.4.2
 
 - Set `heroicons` version to v0.4.2
 - Added outline icons
