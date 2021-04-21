@@ -40,7 +40,9 @@ In your `appsettings.json` add:
 ```json
 {
   "Heroicons": {
-    "IncludeComments": true
+    "IncludeComments": true,
+    "SetAccessibilityAttributes": true,
+    "SetFocusableAttribute": true
   }
 }
 ```
