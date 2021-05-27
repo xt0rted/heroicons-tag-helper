@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IconSourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\src\\HeroiconsTagHelper.csproj"
+    }
+  }
+}
