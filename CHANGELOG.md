@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Bumped `heroicons` from 1.0.1 to 1.0.2
+
 ## Version 1.0.1
 
 - Bumped `heroicons` from 1.0.0 to 1.0.1
