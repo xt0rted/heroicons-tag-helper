@@ -23,7 +23,7 @@ jobs:
         run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Setup Node
-        uses: actions/setup-node@v2.3.0
+        uses: actions/setup-node@v2.3.1
         with:
           node-version: ${{ env.NODE_VERSION }}
 
