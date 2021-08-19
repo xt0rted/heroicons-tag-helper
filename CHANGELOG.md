@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Include `README.md` in the nupkg
+
 ## Version 1.0.4
 
 - Bumped `heroicons` from 1.0.2 to 1.0.4
