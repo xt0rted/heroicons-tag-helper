@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
 
       - name: Build version suffix
         run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
