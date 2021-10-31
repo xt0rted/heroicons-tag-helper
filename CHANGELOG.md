@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Include `README.md` in the nupkg
+- Target .NET Core 3.1 and .NET 5.0
 
 ## Version 1.0.4
 
