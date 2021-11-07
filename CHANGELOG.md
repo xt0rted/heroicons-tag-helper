@@ -2,8 +2,11 @@
 
 ## Unreleased
 
+## 1.0.5
+
 - Include `README.md` in the nupkg
 - Target .NET Core 3.1 and .NET 5.0
+- Bumped `heroicons` from 1.0.4 to 1.0.5
 
 ## Version 1.0.4
 
