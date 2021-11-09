@@ -1,7 +1,5 @@
 ﻿namespace IconSourceGenerator
 {
-    using Microsoft.CodeAnalysis;
-
     internal class IconDetails
     {
         public string Path { get; set; }

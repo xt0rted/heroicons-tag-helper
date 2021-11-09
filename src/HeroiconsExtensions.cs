@@ -1,11 +1,5 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection
 {
-    using System;
-
-    using Microsoft.Extensions.Configuration;
-
-    using Tailwind.Heroicons;
-
     public static class HeroiconsExtensions
     {
         public static IServiceCollection AddHeroicons(this IServiceCollection services, IConfiguration configuration)

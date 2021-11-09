@@ -1,9 +1,5 @@
 ﻿namespace IconSourceGenerator
 {
-    using System;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-
     internal static class IconExtractor
     {
         public static string GetPaths(string icon)

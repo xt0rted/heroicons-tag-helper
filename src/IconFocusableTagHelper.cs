@@ -1,10 +1,5 @@
 ﻿namespace Tailwind.Heroicons
 {
-    using System;
-
-    using Microsoft.AspNetCore.Razor.TagHelpers;
-    using Microsoft.Extensions.Options;
-
     [HtmlTargetElement("heroicon-outline")]
     [HtmlTargetElement("heroicon-solid")]
     public class IconFocusableTagHelper : TagHelper
