@@ -1,15 +1,5 @@
 ﻿namespace IconSourceGenerator
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Runtime.CompilerServices;
-    using System.Text;
-
-    using Microsoft.CodeAnalysis;
-    using Microsoft.CodeAnalysis.Text;
-
     [Generator]
     public class IconSourceGenerator : ISourceGenerator
     {

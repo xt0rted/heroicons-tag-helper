@@ -1,12 +1,5 @@
 ﻿namespace Tailwind.Heroicons
 {
-    using Microsoft.AspNetCore.Razor.TagHelpers;
-    using Microsoft.Extensions.Options;
-
-    using Shouldly;
-
-    using Xunit;
-
     public class IconFocusableTagHelperTests : TagHelperTestBase
     {
         [Fact]

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Using Include="Microsoft.AspNetCore.Razor.TagHelpers" />
+    <Using Include="Microsoft.Extensions.Options" />
+    <Using Include="Shouldly" />
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Shouldly" Version="4.0.3" />
     <PackageReference Include="xunit" Version="2.4.1" />

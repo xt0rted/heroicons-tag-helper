@@ -1,9 +1,5 @@
 ﻿namespace Tailwind.Heroicons
 {
-    using Shouldly;
-
-    using Xunit;
-
     public class IconListTests
     {
         [Fact]
