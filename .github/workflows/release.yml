@@ -27,12 +27,12 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup .NET Core (3.1.x)
-        uses: actions/setup-dotnet@v1.8.2
+        uses: actions/setup-dotnet@v1.9.0
         with:
           dotnet-version: "3.1.x"
 
       - name: Setup .NET Core (global.json)
-        uses: actions/setup-dotnet@v1.8.2
+        uses: actions/setup-dotnet@v1.9.0
 
       - run: npm ci
 
