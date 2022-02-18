@@ -1,3 +1,5 @@
+name: .NET SDK updater
+
 on:
   schedule:
     - cron: "0 12 * * 1-5"
