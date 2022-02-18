@@ -1,0 +1,62 @@
+on:
+  schedule:
+    - cron: "0 12 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2.4.0
+
+      - name: Check for new sdk version
+        uses: xt0rted/dotnet-sdk-updater@v1.0.0
+        id: sdk
+
+      - name: Security update check
+        if: steps.sdk.outputs.updated == 'true'
+        id: security
+        shell: bash
+        run: |
+          if [ "${{ steps.sdk.outputs.security-release }}" = "true" ]
+          then
+            echo "::set-output name=label::security"
+            echo "::set-output name=message::**This update includes a security fix.**"
+          fi
+
+      - name: Create pull request
+        if: steps.sdk.outputs.updated == 'true' && steps.sdk.outputs.dry-run == 'false'
+        id: cpr
+        uses: peter-evans/create-pull-request@v3.12.1
+        with:
+          token: ${{ secrets.DOTNET_SDK_UPDATER_TOKEN }}
+          commit-message: |
+            Bump dotnet sdk from ${{ steps.sdk.outputs.updated-version-from }} to ${{ steps.sdk.outputs.updated-version-to }}
+
+            Bump dotnet sdk from ${{ steps.sdk.outputs.updated-version-from }} to ${{ steps.sdk.outputs.updated-version-to }}. ${{ steps.security.outputs.message }}
+
+            - [Release notes](https://github.com/dotnet/core/releases/tag/v${{ steps.sdk.outputs.updated-version-to }})
+            - [Changelog](${{ steps.sdk.outputs.release-notes }})
+
+            ---
+            updated-dependencies:
+            - dependency-name: dotnet-sdk
+              dependency-type: direct:production
+              update-type: version-update:${{ steps.sdk.outputs.update-type }}
+            ...
+          branch: "dependabot/nuget/dotnet-sdk-${{ steps.sdk.outputs.updated-version-to }}"
+          delete-branch: true
+          branch-suffix: "random"
+          title: |
+            Bump dotnet sdk from ${{ steps.sdk.outputs.updated-version-from }} to ${{ steps.sdk.outputs.updated-version-to }}
+          body: |
+            Bumps [dotnet sdk](https://github.com/dotnet/sdk) from ${{ steps.sdk.outputs.updated-version-from }} to ${{ steps.sdk.outputs.updated-version-to }}. ${{ steps.security.outputs.message }}
+
+            - [Release notes](https://github.com/dotnet/core/releases/tag/v${{ steps.sdk.outputs.release-version }})
+            - [Changelog](${{ steps.sdk.outputs.release-notes }})
+          labels: |
+            dependencies
+            .NET
+            ${{ steps.security.outputs.label }}
