@@ -41,6 +41,9 @@ jobs:
         uses: peter-evans/create-pull-request@v3.12.1
         with:
           token: ${{ steps.generate_token.outputs.token }}
+          author: dotnet-sdk-updater[bot] <100138291+dotnet-sdk-updater[bot]@users.noreply.github.com>
+          signoff: true
+          committer: dotnet-sdk-updater[bot] <100138291+dotnet-sdk-updater[bot]@users.noreply.github.com>
           commit-message: |
             Bump dotnet sdk from ${{ steps.sdk.outputs.updated-version-from }} to ${{ steps.sdk.outputs.updated-version-to }}
 
@@ -57,7 +60,6 @@ jobs:
             ...
           branch: "dependabot/nuget/dotnet-sdk-${{ steps.sdk.outputs.updated-version-to }}"
           delete-branch: true
-          branch-suffix: "random"
           title: |
             Bump dotnet sdk from ${{ steps.sdk.outputs.updated-version-from }} to ${{ steps.sdk.outputs.updated-version-to }}
           body: |
