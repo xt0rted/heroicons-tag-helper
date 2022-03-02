@@ -1,7 +1,9 @@
-name: CodeQL
+name: "CodeQL"
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   schedule:
     - cron: "0 6 * * 1"
@@ -11,16 +13,20 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-permissions:
-  security-events: write
-
 env:
   DOTNET_NOLOGO: true
   NODE_VERSION: "16.x"
 
 jobs:
   analyze:
+    name: Analyze
+
     runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     strategy:
       fail-fast: false
@@ -28,13 +34,14 @@ jobs:
         language: ["csharp"]
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v3.0.0
 
-      - name: Setup Node
+      - name: Set up Node
         uses: actions/setup-node@v3.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: npm
 
       - run: npm ci
 
