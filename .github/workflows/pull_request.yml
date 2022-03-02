@@ -15,25 +15,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v3.0.0
 
       - name: Build version suffix
         run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
 
-      - name: Setup Node
+      - name: Set up Node
         uses: actions/setup-node@v3.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: npm
 
-      - name: Setup .NET Core
+      - name: Set up .NET Core
         uses: actions/setup-dotnet@v2.0.0
         with:
           dotnet-version: |
             3.1.x
             5.0.x
 
-      - name: Setup .NET Core (global.json)
+      - name: Set up .NET Core (global.json)
         uses: actions/setup-dotnet@v2.0.0
 
       - run: npm ci
