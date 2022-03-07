@@ -51,7 +51,7 @@ jobs:
       - run: dotnet pack --configuration Release --output ./artifacts --version-suffix $VERSION_SUFFIX
 
       - name: Publish artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.0.0
         with:
           path: ./artifacts/*.nupkg
 
