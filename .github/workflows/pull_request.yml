@@ -41,11 +41,18 @@ jobs:
 
       - run: dotnet build --configuration Release
 
-      - run: dotnet test --configuration Release --no-build
+      - run: dotnet test --configuration Release --no-build --logger "trx" --results-directory "./.codecoverage"
 
       - run: dotnet pack --configuration Release --output ./artifacts --version-suffix $VERSION_SUFFIX
 
-      - name: Publish artifacts
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3.0.0
         with:
           path: ./artifacts/*.nupkg
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v2.3.1
+        if: always()
+        with:
+          name: test-results
+          path: ./.codecoverage/*.trx
