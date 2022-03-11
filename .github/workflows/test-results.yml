@@ -17,6 +17,9 @@ jobs:
   report:
     runs-on: ubuntu-latest
 
+    permissions:
+      checks: write
+
     steps:
       - uses: dorny/test-reporter@v1.5.0
         with:
