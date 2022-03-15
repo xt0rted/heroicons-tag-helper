@@ -5,6 +5,7 @@
     <RootNamespace>Tailwind.Heroicons</RootNamespace>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     <IsPackable>true</IsPackable>
     <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>

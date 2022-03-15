@@ -106,12 +106,6 @@ namespace Tailwind.Heroicons
                 source.Append("        public static Icon ");
                 source.Append(style.Key.FirstCharToUpper());
                 source.Append("(IconSymbol symbol");
-
-                if (style.Value.Any(i => i.UsesStroke))
-                {
-                    source.Append(", string strokeWidth = null");
-                }
-
                 source.AppendLine(@")
         {
             switch (symbol)
@@ -123,20 +117,23 @@ namespace Tailwind.Heroicons
                     var path = IconExtractor.GetPaths(file);
                     var viewBox = IconExtractor.GetViewBox(file);
 
-                    // Escape the path string before replacing the stroke-width attribute so we can more easily use format strings for it
+                    // Escape the path string before writing it out
                     path = path.Replace("\"", "\\\"");
-
-                    if (icon.UsesStroke)
-                    {
-                        path = IconExtractor.ConfigureStrokeWidth(path);
-                    }
 
                     source.Append("                case IconSymbol.").Append(icon.ClassName).AppendLine(":");
                     source.AppendLine("                    return new Icon");
                     source.AppendLine("                    {");
                     source.Append("                        Name = \"").Append(icon.Name).AppendLine("\",");
-                    source.Append("                        Path = ").Append(icon.UsesStroke ? "$" : "").Append("\"").Append(path).AppendLine("\",");
+                    source.Append("                        Path = \"").Append(path).AppendLine("\",");
                     source.Append("                        ViewBox = \"").Append(viewBox).AppendLine("\",");
+
+                    if (icon.UsesStroke)
+                    {
+                        var strokeWidth = IconExtractor.GetStrokeWidth(file);
+
+                        source.Append("                        StrokeWidth = \"").Append(strokeWidth).AppendLine("\",");
+                    }
+
                     source.AppendLine("                    };");
                     source.AppendLine("");
                 }
@@ -156,6 +153,7 @@ namespace Tailwind.Heroicons
         public string Name { get; set; }
         public string Path { get; set; }
         public string ViewBox { get; set; }
+        public string StrokeWidth { get; set; }
     }
 }
 ");
