@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Target .NET Core 3.1, .NET 5.0, and .NET 6.0
+- Moved build scripts over to the [run-script](https://github.com/xt0rted/dotnet-run-script) dotnet tool
 
 ## [1.0.5](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.4...v1.0.5) - 2021-11-07
 
