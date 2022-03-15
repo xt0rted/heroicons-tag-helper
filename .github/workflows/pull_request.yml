@@ -33,9 +33,10 @@ jobs:
           dotnet-version: |
             3.1.x
             5.0.x
+            6.0.x
 
-      - name: Set up .NET Core (global.json)
-        uses: actions/setup-dotnet@v2.0.0
+      #- name: Set up .NET Core (global.json)
+      #  uses: actions/setup-dotnet@v2.0.0
 
       - run: npm ci
 
