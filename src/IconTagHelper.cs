@@ -28,7 +28,7 @@
 
             var icon = isSolid
                 ? IconList.Solid(Icon)
-                : IconList.Outline(Icon, StrokeWidth);
+                : IconList.Outline(Icon);
 
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "svg";
@@ -41,6 +41,7 @@
             {
                 output.Attributes.SetAttribute("fill", "none");
                 output.Attributes.SetAttribute("stroke", "currentColor");
+                output.Attributes.SetAttribute("stroke-width", StrokeWidth ?? icon.StrokeWidth);
             }
 
             output.Attributes.SetAttribute("viewbox", icon.ViewBox);

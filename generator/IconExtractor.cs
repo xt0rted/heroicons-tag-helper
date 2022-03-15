@@ -18,11 +18,11 @@
             return match.Groups["viewbox"].Value;
         }
 
-        public static string ConfigureStrokeWidth(string path) =>
-            Regex.Replace(
-                path,
-                @"stroke-width=\\""(?<width>[^\\""]+)\\""",
-                @"stroke-width=\""{ strokeWidth ?? ""$1"" }\""",
-                RegexOptions.Compiled);
+        public static string GetStrokeWidth(string icon)
+        {
+            var match = Regex.Match(icon, "stroke-width=\"(?<width>[^\"]+)\"", RegexOptions.Compiled);
+
+            return match.Groups["width"].Value;
+        }
     }
 }
