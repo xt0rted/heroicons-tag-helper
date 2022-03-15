@@ -1,13 +1,8 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
-
-permissions:
-  contents: write
-  packages: write
+  release:
+   types: [published]
 
 env:
   DOTNET_NOLOGO: true
@@ -17,7 +12,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      packages: write
+
     steps:
+      - name: Get version from tag
+        id: tag_name
+        run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        shell: bash
+
       - name: Check out repository
         uses: actions/checkout@v3.0.0
 
@@ -37,6 +41,12 @@ jobs:
 
       #- name: Set up .NET Core (global.json)
       #  uses: actions/setup-dotnet@v2.0.0
+
+      - name: Get changelog entry
+        uses: mindsers/changelog-reader-action@v2.0.0
+        id: changelog_reader
+        with:
+          version: ${{ steps.tag_name.outputs.current_version }}
 
       - run: npm ci
 
@@ -65,6 +75,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          body: ${{ steps.changelog_reader.outputs.changes }}
           files: ./artifacts/*.nupkg
 
       - name: Publish to GPR
