@@ -2,8 +2,12 @@
 
 ## Unreleased
 
-- Target .NET Core 3.1, .NET 5.0, and .NET 6.0
-- Moved build scripts over to the [run-script](https://github.com/xt0rted/dotnet-run-script) dotnet tool
+## [1.0.6](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.5...v1.0.6) - 2022-03-15
+
+- Bumped `heroicons` from 1.0.5 to 1.0.6 ([#131](https://github.com/xt0rted/heroicons-tag-helper/pull/131))
+  - They moved the `stroke-width` attribute from the `path` to the `svg` element in this version. This attribute is still supported, but styling with css is the preferred method now.
+- Target .NET Core 3.1, .NET 5.0, and .NET 6.0 ([#95](https://github.com/xt0rted/heroicons-tag-helper/pull/95))
+- Moved build scripts over to the [run-script](https://github.com/xt0rted/dotnet-run-script) dotnet tool ([#136](https://github.com/xt0rted/heroicons-tag-helper/pull/136))
 
 ## [1.0.5](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.4...v1.0.5) - 2021-11-07
 
