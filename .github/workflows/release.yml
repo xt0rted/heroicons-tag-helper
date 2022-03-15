@@ -39,11 +39,13 @@ jobs:
 
       - run: npm ci
 
-      - run: dotnet build --configuration Release
+      - run: dotnet tool restore
 
-      - run: dotnet test --configuration Release --no-build --logger "trx" --results-directory "./.codecoverage"
+      - run: dotnet r build:release
 
-      - run: dotnet pack --configuration Release --output ./artifacts
+      - run: dotnet r test:release
+
+      - run: dotnet r pack:release
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3.0.0
@@ -55,7 +57,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: ./.codecoverage/*.trx
+          path: ./.coverage/*.trx
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v1
