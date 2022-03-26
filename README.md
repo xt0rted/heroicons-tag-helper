@@ -1,4 +1,4 @@
-# heroicons-tag-helper
+# <img src="assets/logo.svg" align="left" height="45"> heroicons-tag-helper
 
 [![CI build status](https://github.com/xt0rted/heroicons-tag-helper/workflows/CI/badge.svg)](https://github.com/xt0rted/heroicons-tag-helper/actions?query=workflow%3ACI)
 [![NuGet Package](https://img.shields.io/nuget/v/HeroiconsTagHelper?logo=nuget)](https://www.nuget.org/packages/HeroiconsTagHelper)
