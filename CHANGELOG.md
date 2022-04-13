@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet)
+
 ## [1.0.6](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.5...v1.0.6) - 2022-03-15
 
 - Bumped `heroicons` from 1.0.5 to 1.0.6 ([#131](https://github.com/xt0rted/heroicons-tag-helper/pull/131))
