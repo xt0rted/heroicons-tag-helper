@@ -33,7 +33,7 @@ jobs:
           cache: npm
 
       - name: Set up .NET Core
-        uses: xt0rted/setup-dotnet@v1.1.0
+        uses: xt0rted/setup-dotnet@v1.2.0
 
       - run: npm ci
 
