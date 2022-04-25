@@ -8,6 +8,7 @@ concurrency:
 
 env:
   DOTNET_NOLOGO: true
+  FORCE_COLOR: 3
   NODE_VERSION: "16.x"
 
 jobs:
@@ -26,6 +27,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
+        env:
+          FORCE_COLOR: 0
 
       - name: Set up .NET Core
         uses: xt0rted/setup-dotnet@v1.2.0
