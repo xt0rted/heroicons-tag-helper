@@ -36,7 +36,7 @@ jobs:
           FORCE_COLOR: 0
 
       - name: Set up .NET Core
-        uses: xt0rted/setup-dotnet@v1.2.0
+        uses: xt0rted/setup-dotnet@v1.3.0
 
       - run: npm ci
 
