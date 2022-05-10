@@ -35,7 +35,7 @@ jobs:
           FORCE_COLOR: 0
 
       - name: Set up .NET Core
-        uses: xt0rted/setup-dotnet@v1.3.0
+        uses: xt0rted/setup-dotnet@v1.4.0
 
       - name: Get changelog entry
         uses: mindsers/changelog-reader-action@v2.0.0
