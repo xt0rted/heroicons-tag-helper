@@ -23,7 +23,7 @@ jobs:
         run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Set up Node
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v3.2.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
