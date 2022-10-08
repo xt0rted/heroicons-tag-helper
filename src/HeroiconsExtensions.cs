@@ -1,25 +1,24 @@
-﻿namespace Microsoft.Extensions.DependencyInjection
+﻿namespace Microsoft.Extensions.DependencyInjection;
+
+public static class HeroiconsExtensions
 {
-    public static class HeroiconsExtensions
+    public static IServiceCollection AddHeroicons(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddHeroicons(this IServiceCollection services, IConfiguration configuration)
-        {
-            if (services is null) throw new ArgumentNullException(nameof(services));
-            if (configuration is null) throw new ArgumentNullException(nameof(configuration));
+        if (services is null) throw new ArgumentNullException(nameof(services));
+        if (configuration is null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<HeroiconOptions>(configuration.GetSection("Heroicons"));
+        services.Configure<HeroiconOptions>(configuration.GetSection("Heroicons"));
 
-            return services;
-        }
+        return services;
+    }
 
-        public static IServiceCollection AddHeroicons(this IServiceCollection services, Action<HeroiconOptions> configureOptions)
-        {
-            if (services is null) throw new ArgumentNullException(nameof(services));
-            if (configureOptions is null) throw new ArgumentNullException(nameof(configureOptions));
+    public static IServiceCollection AddHeroicons(this IServiceCollection services, Action<HeroiconOptions> configureOptions)
+    {
+        if (services is null) throw new ArgumentNullException(nameof(services));
+        if (configureOptions is null) throw new ArgumentNullException(nameof(configureOptions));
 
-            services.Configure(configureOptions);
+        services.Configure(configureOptions);
 
-            return services;
-        }
+        return services;
     }
 }

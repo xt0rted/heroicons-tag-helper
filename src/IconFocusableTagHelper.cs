@@ -1,29 +1,28 @@
-﻿namespace Tailwind.Heroicons
+﻿namespace Tailwind.Heroicons;
+
+[HtmlTargetElement("heroicon-outline")]
+[HtmlTargetElement("heroicon-solid")]
+public class IconFocusableTagHelper : TagHelper
 {
-    [HtmlTargetElement("heroicon-outline")]
-    [HtmlTargetElement("heroicon-solid")]
-    public class IconFocusableTagHelper : TagHelper
+    private readonly HeroiconOptions _settings;
+
+    public IconFocusableTagHelper(IOptions<HeroiconOptions> settings)
     {
-        private readonly HeroiconOptions _settings;
+        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+    }
 
-        public IconFocusableTagHelper(IOptions<HeroiconOptions> settings)
+    public override int Order => 1000;
+
+    public override void Process(TagHelperContext context, TagHelperOutput output)
+    {
+        if (context is null) throw new ArgumentNullException(nameof(context));
+        if (output is null) throw new ArgumentNullException(nameof(output));
+
+        if (!_settings.SetFocusableAttribute)
         {
-            _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+            return;
         }
 
-        public override int Order => 1000;
-
-        public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
-            if (context is null) throw new ArgumentNullException(nameof(context));
-            if (output is null) throw new ArgumentNullException(nameof(output));
-
-            if (!_settings.SetFocusableAttribute)
-            {
-                return;
-            }
-
-            output.Attributes.SetAttribute("focusable", "false");
-        }
+        output.Attributes.SetAttribute("focusable", "false");
     }
 }
