@@ -3,11 +3,17 @@
     "version": "6.0.401"
   },
   "scripts": {
+    "clean": "dotnet rimraf artifacts",
+    "clean:bin": "dotnet rimraf **/bin **/obj",
+
     // Debug mode scripts
     "build": "dotnet build",
-    "test": "dotnet test --no-build --logger \"trx\" --results-directory \"./.coverage\"",
+    "test": "dotnet test --logger \"trx\" --results-directory \"./.coverage\"",
+    "test:31": "dotnet r test -- --framework netcoreapp3.1",
+    "test:6": "dotnet r test -- --framework net6.0",
     "pack": "dotnet pack --no-build --output ./artifacts",
     "ci": "dotnet r build && dotnet r test && dotnet r pack",
+    "sample": "dotnet watch [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] --verbose --project sample",
 
     // Release mode scripts
     "build:release": "dotnet r build -- --configuration Release",
