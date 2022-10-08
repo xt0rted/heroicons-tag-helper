@@ -2,13 +2,12 @@
 
 ## Unreleased
 
-> **Note**: This version drops support for .NET 5 which is no longer supported.
-
 > **Note**: Due to a number of missing/incorrectly named icons the following versions were skipped: v2.0.0, v2.0.1, v2.0.2
 
 - Bumped `heroicons` from 1.0.6 to 2.0.3 ([#186](https://github.com/xt0rted/heroicons-tag-helper/pull/186))
   - A lot of icons were renamed in this release, see the `Update icon names` section in the [2.0.0 release notes](https://github.com/tailwindlabs/heroicons/releases/tag/v2.0.0) for more details
   - The new mini variant is available using the tag name `heroicon-mini` which supports the same settings as the solid variant
+- Dropped support for .NET 5 which is no longer supported
 - Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet)
 
 ## [1.0.6](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.5...v1.0.6) - 2022-03-15
