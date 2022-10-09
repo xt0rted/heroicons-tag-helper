@@ -1,0 +1,15 @@
+[*.cs]
+# CA1063: Implement IDisposable Correctly
+dotnet_diagnostic.CA1063.severity = none
+
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+
+# CA1816: Dispose methods should call SuppressFinalize
+dotnet_diagnostic.CA1816.severity = none
+
+# CA2234: Pass system uri objects instead of strings
+dotnet_diagnostic.CA2234.severity = none
+
+# CS8618: Non-nullable field is uninitialized. Consider declaring as nullable.
+dotnet_diagnostic.CS8618.severity = none

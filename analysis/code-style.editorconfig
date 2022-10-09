@@ -1,0 +1,4 @@
+is_global = true
+
+# IDE0001: Simplify name
+dotnet_diagnostic.IDE0001.severity = error

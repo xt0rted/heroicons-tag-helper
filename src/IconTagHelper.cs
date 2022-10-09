@@ -1,4 +1,4 @@
-﻿namespace Tailwind.Heroicons;
+namespace Tailwind.Heroicons;
 
 /// <summary>
 /// Tag helper that emits Heroicon icons as inline svg elements.
@@ -17,9 +17,7 @@ public class IconTagHelper : TagHelper
     /// <param name="settings">The <see cref="HeroiconOptions"/> to use when processing the target element.</param>
     /// <exception cref="ArgumentNullException"></exception>
     public IconTagHelper(IOptions<HeroiconOptions> settings)
-    {
-        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
-    }
+        => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
 
     /// <inheritdoc/>
     public override int Order => 0;
@@ -46,11 +44,20 @@ public class IconTagHelper : TagHelper
         var isMini = context.TagName.Equals("heroicon-mini", StringComparison.OrdinalIgnoreCase);
         var isSolid = context.TagName.Equals("heroicon-solid", StringComparison.OrdinalIgnoreCase);
 
-        var icon = isMini
-            ? IconList.Mini(Icon)
-            : isSolid
-                ? IconList.Solid(Icon)
-                : IconList.Outline(Icon);
+        Icon icon;
+
+        if (isMini)
+        {
+            icon = IconList.Mini(Icon);
+        }
+        else if (isSolid)
+        {
+            icon = IconList.Solid(Icon);
+        }
+        else
+        {
+            icon = IconList.Outline(Icon);
+        }
 
         output.TagMode = TagMode.StartTagAndEndTag;
         output.TagName = "svg";

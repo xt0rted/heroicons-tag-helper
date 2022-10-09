@@ -1,7 +1,7 @@
-﻿namespace Tailwind.Heroicons;
+namespace Tailwind.Heroicons;
 
 /// <summary>
-/// Tag helper that sets the <code>aria-hidden</code> or <code>role</code> attribute based on if <code>aria-label</code> or <code>aria-labeledby</code> are set.
+/// Tag helper that sets the <c>aria-hidden</c> or <c>role</c> attribute based on if <c>aria-label</c> or <c>aria-labeledby</c> are set.
 /// The attributes will only be set if they don't already exist on the element.
 /// </summary>
 [HtmlTargetElement("heroicon-mini")]
@@ -17,9 +17,7 @@ public class IconAccessibilityTagHelper : TagHelper
     /// <param name="settings">The <see cref="HeroiconOptions"/> to use when processing the target element.</param>
     /// <exception cref="ArgumentNullException"></exception>
     public IconAccessibilityTagHelper(IOptions<HeroiconOptions> settings)
-    {
-        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
-    }
+        => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
 
     /// <inheritdoc/>
     public override int Order => 1000;

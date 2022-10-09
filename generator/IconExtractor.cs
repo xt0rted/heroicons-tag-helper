@@ -1,26 +1,29 @@
-﻿namespace IconSourceGenerator;
+namespace IconSourceGenerator;
 
 internal static class IconExtractor
 {
+    private static readonly Regex ViewBoxRegEx = new("viewBox=\"(?<viewbox>[^\"]+)\"", RegexOptions.Compiled);
+    private static readonly Regex StrokeWidthRegEx = new("stroke-width=\"(?<width>[^\"]+)\"", RegexOptions.Compiled);
+
     public static string GetPaths(string icon)
     {
         var lines = icon.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).Select(path => path.Trim()).ToArray();
 
         var paths = lines.Skip(1).Take(lines.Length - 2);
 
-        return string.Join("", paths);
+        return string.Concat(paths);
     }
 
     public static string GetViewBox(string icon)
     {
-        var match = Regex.Match(icon, "viewBox=\"(?<viewbox>[^\"]+)\"", RegexOptions.Compiled);
+        var match = ViewBoxRegEx.Match(icon);
 
         return match.Groups["viewbox"].Value;
     }
 
     public static string GetStrokeWidth(string icon)
     {
-        var match = Regex.Match(icon, "stroke-width=\"(?<width>[^\"]+)\"", RegexOptions.Compiled);
+        var match = StrokeWidthRegEx.Match(icon);
 
         return match.Groups["width"].Value;
     }

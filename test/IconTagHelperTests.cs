@@ -1,4 +1,4 @@
-﻿namespace Tailwind.Heroicons
+namespace Tailwind.Heroicons
 {
     public class IconTagHelperTests : TagHelperTestBase
     {
@@ -191,10 +191,11 @@
             var context = MakeTagHelperContext("heroicon-outline");
             var output = MakeTagHelperOutput("heroicon-outline");
 
-            var options = Options.Create(new HeroiconOptions
-            {
-                IncludeComments = false,
-            });
+            var options = Options.Create(
+                new HeroiconOptions
+                {
+                    IncludeComments = false,
+                });
             var helper = new IconTagHelper(options)
             {
                 Icon = IconSymbol.Bell,
@@ -214,10 +215,11 @@
             var context = MakeTagHelperContext("heroicon-outline");
             var output = MakeTagHelperOutput("heroicon-outline");
 
-            var options = Options.Create(new HeroiconOptions
-            {
-                IncludeComments = true,
-            });
+            var options = Options.Create(
+                new HeroiconOptions
+                {
+                    IncludeComments = true,
+                });
             var helper = new IconTagHelper(options)
             {
                 Icon = IconSymbol.Bell,

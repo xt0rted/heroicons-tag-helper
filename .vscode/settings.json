@@ -1,7 +1,4 @@
 {
-    "files.associations" : {
-        "global.json" : "json5"
-    },
     "cSpell.words": [
         "cref",
         "evenodd",
