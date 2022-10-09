@@ -25,6 +25,8 @@ namespace Tailwind.Heroicons
 
         protected static void AssertAttributeValue(TagHelperAttributeList attributes, string name, string value)
         {
+            if (attributes is null) throw new ArgumentNullException(nameof(attributes));
+
             attributes
                 .Count(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
                 .ShouldBe(1);
