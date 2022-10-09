@@ -8,8 +8,10 @@
   - A lot of icons were renamed in this release, see the `Update icon names` section in the [2.0.0 release notes](https://github.com/tailwindlabs/heroicons/releases/tag/v2.0.0) for more details
   - The new mini variant is available using the tag name `heroicon-mini` which supports the same settings as the solid variant
 - Dropped support for .NET 5 which is no longer supported
-- Fixed xml documentation file so it's included in the package
-- Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet)
+- Fixed xml documentation file so it's included in the package ([#189](https://github.com/xt0rted/heroicons-tag-helper/pull/189))
+- Adjusted `IconAccessibilityTagHelper` so it only sets the `aria-hidden` or `role` attributes if they don't already exist ([#191](https://github.com/xt0rted/heroicons-tag-helper/pull/191))
+  - In rare situations this could be a breaking change if you were relying on this to force a value
+- Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet) ([#144](https://github.com/xt0rted/heroicons-tag-helper/pull/144))
 
 ## [1.0.6](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.5...v1.0.6) - 2022-03-15
 

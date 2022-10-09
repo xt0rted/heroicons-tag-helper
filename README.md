@@ -59,6 +59,8 @@ Name | Default Value | Description
 
 If `aria-label` or `aria-labeledby` are set then the icon is being used as an image so [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img#svg_and_roleimg) will be added to the svg tag, otherwise [`aria-hidden="true"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-hidden_attribute) will be added.
 
+> **Note**: If the element already contains an `aria-hidden` or `role` attribute then it will not be modified.
+
 ## Usage
 
 There are two versions of the tag helper which are used to pick between the `outline` and `solid` icon styles.
