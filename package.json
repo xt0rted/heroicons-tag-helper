@@ -1,7 +1,13 @@
 {
   "name": "heroicons-tag-helper",
   "private": true,
+  "scripts": {
+    "test": "markdownlint \"**/*.md\" --ignore node_modules"
+  },
   "dependencies": {
     "heroicons": "^2.0.3"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.32.2"
   }
 }
