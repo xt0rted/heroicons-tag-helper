@@ -5,6 +5,7 @@ on:
    types: [published]
 
 env:
+  CONFIGURATION: Release
   DOTNET_NOLOGO: true
   FORCE_COLOR: 3
   NODE_VERSION: "16.x"
@@ -47,11 +48,11 @@ jobs:
 
       - run: dotnet tool restore
 
-      - run: dotnet r build:release
+      - run: dotnet r build
 
-      - run: dotnet r test:release
+      - run: dotnet r test -- --no-build
 
-      - run: dotnet r pack:release
+      - run: dotnet r pack -- --no-build
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3.1.0
