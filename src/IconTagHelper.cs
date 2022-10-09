@@ -1,6 +1,8 @@
 ﻿namespace Tailwind.Heroicons;
 
-
+/// <summary>
+/// Tag helper that emits Heroicon icons as inline svg elements.
+/// </summary>
 [HtmlTargetElement("heroicon-mini", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-outline", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-solid", TagStructure = TagStructure.WithoutEndTag)]
@@ -8,19 +10,32 @@ public class IconTagHelper : TagHelper
 {
     private readonly HeroiconOptions _settings;
 
+    /// <summary>
+    /// Creates a new <see cref="IconTagHelper"/>.
+    /// </summary>
+    /// <param name="settings">The <see cref="HeroiconOptions"/> to use when processing the target element.</param>
+    /// <exception cref="ArgumentNullException"></exception>
     public IconTagHelper(IOptions<HeroiconOptions> settings)
     {
         _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
     }
 
+    /// <inheritdoc/>
     public override int Order => 0;
 
+    /// <summary>
+    /// The name of the Heroicon to use.
+    /// </summary>
     [HtmlAttributeName("icon")]
     public IconSymbol Icon { get; set; }
 
+    /// <summary>
+    /// Custom stroke width to use for the outline variants.
+    /// </summary>
     [HtmlAttributeName("stroke-width")]
     public string StrokeWidth { get; set; }
 
+    /// <inheritdoc/>
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         if (context is null) throw new ArgumentNullException(nameof(context));
