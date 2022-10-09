@@ -1,7 +1,7 @@
-﻿namespace Tailwind.Heroicons;
+namespace Tailwind.Heroicons;
 
 /// <summary>
-/// Tag helper that sets <code>focusable="false"</code> on <see cref="IconTagHelper"/> instances.
+/// Tag helper that sets <c>focusable</c> to <c>false</c> on <see cref="IconTagHelper"/> instances.
 /// </summary>
 [HtmlTargetElement("heroicon-mini")]
 [HtmlTargetElement("heroicon-outline")]
@@ -16,9 +16,7 @@ public class IconFocusableTagHelper : TagHelper
     /// <param name="settings">The <see cref="HeroiconOptions"/> to use when processing the target element.</param>
     /// <exception cref="ArgumentNullException"></exception>
     public IconFocusableTagHelper(IOptions<HeroiconOptions> settings)
-    {
-        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
-    }
+        => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
 
     /// <inheritdoc/>
     public override int Order => 1000;

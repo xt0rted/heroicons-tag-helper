@@ -1,4 +1,4 @@
-﻿namespace IconSourceGenerator;
+namespace IconSourceGenerator;
 
 internal static class StringExtensions
 {
@@ -20,6 +20,6 @@ internal static class StringExtensions
             splitName[i] = FirstCharToUpper(splitName[i]);
         }
 
-        return string.Join(string.Empty, splitName);
+        return string.Concat(splitName);
     }
 }

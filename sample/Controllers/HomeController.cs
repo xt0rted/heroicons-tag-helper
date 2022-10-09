@@ -1,12 +1,8 @@
-﻿namespace Sample.Controllers
-{
-    using Microsoft.AspNetCore.Mvc;
+namespace Sample.Controllers;
 
-    public class HomeController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
-        }
-    }
+using Microsoft.AspNetCore.Mvc;
+
+public class HomeController : Controller
+{
+    public IActionResult Index() => View();
 }

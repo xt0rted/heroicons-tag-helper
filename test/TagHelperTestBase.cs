@@ -1,8 +1,8 @@
-﻿namespace Tailwind.Heroicons
+namespace Tailwind.Heroicons
 {
     public abstract class TagHelperTestBase
     {
-        protected static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList attributes = null)
+        protected static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList? attributes = null)
         {
             attributes ??= new TagHelperAttributeList();
 
@@ -13,14 +13,14 @@
                 uniqueId: Guid.NewGuid().ToString("N"));
         }
 
-        protected static TagHelperOutput MakeTagHelperOutput(string tagName, TagHelperAttributeList attributes = null)
+        protected static TagHelperOutput MakeTagHelperOutput(string tagName, TagHelperAttributeList? attributes = null)
         {
             attributes ??= new TagHelperAttributeList();
 
             return new TagHelperOutput(
                 tagName,
                 attributes: attributes,
-                getChildContentAsync: (useCachedResult, encoder) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
+                getChildContentAsync: (_, __) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
         }
 
         protected static void AssertAttributeValue(TagHelperAttributeList attributes, string name, string value)
