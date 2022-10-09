@@ -72,6 +72,9 @@ public class IconSourceGenerator : ISourceGenerator
             """
             namespace Tailwind.Heroicons
             {
+                /// <summary>
+                /// The available icons.
+                /// </summary>
                 public enum IconSymbol
                 {
 
@@ -102,6 +105,9 @@ public class IconSourceGenerator : ISourceGenerator
             {
                 using System;
 
+                /// <summary>
+                /// Helper used to get parsed icon details.
+                /// </summary>
                 public static class IconList
                 {
 
@@ -109,12 +115,14 @@ public class IconSourceGenerator : ISourceGenerator
 
         foreach (var style in icons)
         {
-            source.Append("        public static Icon ");
-            source.Append(style.Key.FirstCharToUpper());
-            source.Append("(IconSymbol symbol");
             source.AppendLine(
-                """
-                )
+                $$"""
+                        /// <summary>
+                        /// Get the details of an icon in the {{style.Key.FirstCharToUpper()}} variation.
+                        /// </summary>
+                        /// <param name="symbol">The <see cref="IconSymbol"/> to get the details of.</param>
+                        /// <returns>The icon details.</returns>
+                        public static Icon {{style.Key.FirstCharToUpper()}}(IconSymbol symbol)
                         {
                             switch (symbol)
                             {
@@ -144,7 +152,7 @@ public class IconSourceGenerator : ISourceGenerator
                 }
 
                 source.AppendLine("                    };");
-                source.AppendLine("");
+                source.AppendLine();
             }
 
             source.AppendLine(
@@ -160,11 +168,29 @@ public class IconSourceGenerator : ISourceGenerator
             """
                 }
 
+                /// <summary>
+                /// A parsed Heroicon.
+                /// </summary>
                 public class Icon
                 {
+                    /// <summary>
+                    /// The filename without extension.
+                    /// </summary>
                     public string Name { get; set; }
+
+                    /// <summary>
+                    /// The svg path element.
+                    /// </summary>
                     public string Path { get; set; }
+
+                    /// <summary>
+                    /// The svg <c>viewbox</c> attribute value.
+                    /// </summary>
                     public string ViewBox { get; set; }
+
+                    /// <summary>
+                    /// The svg <c>stroke-width</c> attribute value.
+                    /// </summary>
                     public string StrokeWidth { get; set; }
                 }
             }

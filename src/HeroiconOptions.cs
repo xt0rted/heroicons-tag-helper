@@ -1,5 +1,8 @@
 ﻿namespace Tailwind.Heroicons;
 
+/// <summary>
+/// Global settings used when emitting Heroicons.
+/// </summary>
 public class HeroiconOptions
 {
     /// <summary>

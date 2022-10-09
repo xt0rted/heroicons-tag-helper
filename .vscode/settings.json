@@ -3,10 +3,14 @@
         "global.json" : "json5"
     },
     "cSpell.words": [
+        "cref",
         "evenodd",
         "heroicon",
         "heroicons",
+        "inheritdoc",
+        "labeledby",
         "linecap",
-        "linejoin"
+        "linejoin",
+        "viewbox"
     ]
 }
