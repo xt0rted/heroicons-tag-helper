@@ -6,6 +6,7 @@
 [HtmlTargetElement("heroicon-mini", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-outline", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-solid", TagStructure = TagStructure.WithoutEndTag)]
+[OutputElementHint("svg")]
 public class IconTagHelper : TagHelper
 {
     private readonly HeroiconOptions _settings;
