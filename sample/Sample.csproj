@@ -3,11 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <TargetFrameworks></TargetFrameworks>
+    <NoWarn>1701;1702;CS0618</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Using Remove="System.Net.Http.Json" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\src\HeroiconsTagHelper.csproj" />

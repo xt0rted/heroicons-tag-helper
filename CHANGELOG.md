@@ -11,6 +11,7 @@
 - Fixed xml documentation file so it's included in the package ([#189](https://github.com/xt0rted/heroicons-tag-helper/pull/189))
 - Adjusted `IconAccessibilityTagHelper` so it only sets the `aria-hidden` or `role` attributes if they don't already exist ([#191](https://github.com/xt0rted/heroicons-tag-helper/pull/191))
   - In rare situations this could be a breaking change if you were relying on this to force a value
+- The `stroke-width` attribute is now deprecated in favor of [styling with css](https://tailwindcss.com/docs/stroke-width) ([#192](https://github.com/xt0rted/heroicons-tag-helper/pull/192))
 - Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet) ([#144](https://github.com/xt0rted/heroicons-tag-helper/pull/144))
 
 ## [1.0.6](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.5...v1.0.6) - 2022-03-15

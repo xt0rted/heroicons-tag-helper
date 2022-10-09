@@ -89,8 +89,10 @@ will output
 </svg>
 ```
 
+> **Note**: The `stroke-width` attribute is now deprecated and will be removed in a future release
+
 The `outline` style also lets you set the `stroke-width` attribute which will be passed down to any paths that support it.
-The Heroicons default is `2`, but this will let you adjust it as needed.
+The Heroicons default is `1.5` (in v1 it was `2`), but this will let you adjust it as needed.
 
 ```html
 <heroicon-outline icon="Sun" class="h-6 w-6 text-orange-500" stroke-width="1" />
