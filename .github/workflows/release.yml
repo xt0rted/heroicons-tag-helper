@@ -37,12 +37,6 @@ jobs:
       - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.4.0
 
-      - name: Get changelog entry
-        uses: mindsers/changelog-reader-action@v2.2.0
-        id: changelog_reader
-        with:
-          version: ${{ steps.tag_name.outputs.current_version }}
-
       - run: npm ci
 
       - run: dotnet tool restore
@@ -58,13 +52,28 @@ jobs:
         with:
           path: ./artifacts/*.nupkg
 
+      - name: Get changelog entry
+        uses: mindsers/changelog-reader-action@v2.2.0
+        id: changelog_reader
+        with:
+          version: ${{ steps.tag_name.outputs.current_version }}
+
       - name: Upload release assets
         uses: softprops/action-gh-release@v0.1.14
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: release_updater
         with:
           body: ${{ steps.changelog_reader.outputs.changes }}
           files: ./artifacts/*.nupkg
+
+      - name: Create discussion for release
+        run: |
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/releases/${{ steps.release_updater.outputs.id }} \
+            -f discussion_category_name='Announcements'
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Publish to GPR
         run: |
