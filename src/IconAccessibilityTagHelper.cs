@@ -2,6 +2,7 @@
 
 /// <summary>
 /// Tag helper that sets the <code>aria-hidden</code> or <code>role</code> attribute based on if <code>aria-label</code> or <code>aria-labeledby</code> are set.
+/// The attributes will only be set if they don't already exist on the element.
 /// </summary>
 [HtmlTargetElement("heroicon-mini")]
 [HtmlTargetElement("heroicon-outline")]
@@ -34,20 +35,25 @@ public class IconAccessibilityTagHelper : TagHelper
             return;
         }
 
-        var ariaLabel = output.Attributes["aria-label"]?.ToStringValue();
-        var ariaLabeledBy = output.Attributes["aria-labeledby"]?.ToStringValue();
-
         var isUsedAsImage =
-            !string.IsNullOrWhiteSpace(ariaLabel) ||
-            !string.IsNullOrWhiteSpace(ariaLabeledBy);
+            output.Attributes.ContainsName("aria-label") ||
+            output.Attributes.ContainsName("aria-labeledby");
 
         if (isUsedAsImage)
         {
-            output.Attributes.SetAttribute("role", "img");
+            // If the attribute is already set then honor that value instead of forcing it to img
+            if (!output.Attributes.ContainsName("role"))
+            {
+                output.Attributes.SetAttribute("role", "img");
+            }
         }
         else
         {
-            output.Attributes.SetAttribute("aria-hidden", "true");
+            // If the attribute is already set then honor that value instead of forcing it to true
+            if (!output.Attributes.ContainsName("aria-hidden"))
+            {
+                output.Attributes.SetAttribute("aria-hidden", "true");
+            }
         }
     }
 }
