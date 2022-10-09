@@ -4,25 +4,24 @@ on:
   release:
    types: [published]
 
+permissions:
+  contents: write
+  packages: write
+
 env:
   CONFIGURATION: Release
   DOTNET_NOLOGO: true
   FORCE_COLOR: 3
-  NODE_VERSION: "16.x"
+  NODE_VERSION: 18
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      packages: write
-
     steps:
       - name: Get version from tag
         id: tag_name
         run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
-        shell: bash
 
       - name: Check out repository
         uses: actions/checkout@v3.0.2
@@ -35,7 +34,7 @@ jobs:
         env:
           FORCE_COLOR: 0
 
-      - name: Set up .NET Core
+      - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.4.0
 
       - name: Get changelog entry
@@ -50,24 +49,17 @@ jobs:
 
       - run: dotnet r build
 
-      - run: dotnet r test -- --no-build
+      - run: dotnet r test -- --no-build --logger GitHubActions
 
       - run: dotnet r pack -- --no-build
 
-      - name: Upload artifacts
+      - name: Publish artifacts
         uses: actions/upload-artifact@v3.1.0
         with:
           path: ./artifacts/*.nupkg
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v3.1.0
-        if: always()
-        with:
-          name: test-results
-          path: ./.coverage/*.trx
-
       - name: Upload release assets
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.14
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

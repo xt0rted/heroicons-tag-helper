@@ -6,11 +6,11 @@
     "clean": "dotnet rimraf artifacts",
     "clean:bin": "dotnet rimraf **/bin **/obj",
     "build": "dotnet build",
-    "test": "dotnet test --logger \"trx\" --results-directory \"./.coverage\"",
-    "test:31": "dotnet r test -- --framework netcoreapp3.1",
-    "test:6": "dotnet r test -- --framework net6.0",
-    "pack": "dotnet pack --no-build --output ./artifacts",
+    "test": "dotnet test",
+    "test:31": "dotnet test --framework netcoreapp3.1",
+    "test:6": "dotnet test --framework net6.0",
+    "pack": "dotnet pack --output ./artifacts",
     "ci": "dotnet r build test pack",
-    "sample": "dotnet watch [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] --verbose --project sample"
+    "watch": "dotnet watch [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] --verbose --project sample"
   }
 }
