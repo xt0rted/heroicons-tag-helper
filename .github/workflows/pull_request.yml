@@ -52,7 +52,7 @@ jobs:
         env:
           FORCE_COLOR: 0
 
-      - name: Set up .NET Core
+      - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.4.0
 
       - run: npm ci
@@ -61,18 +61,11 @@ jobs:
 
       - run: dotnet r build
 
-      - run: dotnet r test -- --no-build
+      - run: dotnet r test -- --no-build --logger GitHubActions
 
       - run: dotnet r pack -- --no-build --version-suffix $VERSION_SUFFIX
 
-      - name: Upload artifacts
+      - name: Publish artifacts
         uses: actions/upload-artifact@v3.1.0
         with:
           path: ./artifacts/*.nupkg
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v3.1.0
-        if: always()
-        with:
-          name: test-results
-          path: ./.coverage/*.trx
