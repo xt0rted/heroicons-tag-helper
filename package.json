@@ -1,7 +1,7 @@
 {
   "name": "heroicons-tag-helper",
   "private": true,
-  "devDependencies": {
-    "heroicons": "2.0.3"
+  "dependencies": {
+    "heroicons": "^2.0.3"
   }
 }
