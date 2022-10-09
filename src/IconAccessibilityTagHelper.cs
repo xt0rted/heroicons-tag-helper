@@ -3,6 +3,7 @@
 /// <summary>
 /// Tag helper that sets the <code>aria-hidden</code> or <code>role</code> attribute based on if <code>aria-label</code> or <code>aria-labeledby</code> are set.
 /// </summary>
+[HtmlTargetElement("heroicon-mini")]
 [HtmlTargetElement("heroicon-outline")]
 [HtmlTargetElement("heroicon-solid")]
 public class IconAccessibilityTagHelper : TagHelper

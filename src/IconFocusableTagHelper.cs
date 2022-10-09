@@ -3,6 +3,7 @@
 /// <summary>
 /// Tag helper that sets <code>focusable="false"</code> on <see cref="IconTagHelper"/> instances.
 /// </summary>
+[HtmlTargetElement("heroicon-mini")]
 [HtmlTargetElement("heroicon-outline")]
 [HtmlTargetElement("heroicon-solid")]
 public class IconFocusableTagHelper : TagHelper
