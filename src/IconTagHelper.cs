@@ -33,7 +33,7 @@ public class IconTagHelper : TagHelper
     /// </summary>
     [Obsolete("Outline icons should be styled with css classes")]
     [HtmlAttributeName("stroke-width")]
-    public string StrokeWidth { get; set; }
+    public string? StrokeWidth { get; set; }
 
     /// <inheritdoc/>
     public override void Process(TagHelperContext context, TagHelperOutput output)
