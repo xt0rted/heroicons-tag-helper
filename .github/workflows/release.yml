@@ -24,7 +24,7 @@ jobs:
         run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
 
       - name: Check out repository
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3.1.0
 
       - name: Set up Node
         uses: actions/setup-node@v3.5.0
