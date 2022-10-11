@@ -2,10 +2,15 @@
 
 ## Unreleased
 
+## [2.0.9](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.8...v2.0.9) - 2022-10-11
+
+- Bumped `heroicons` from 2.0.8 to 2.0.9
+  - Adds new icons: `arrow-small-down`, `arrow-small-left`, `arrow-small-right`, `arrow-small-up`, `battery-0`, `battery-100`, `battery-50`, `cube-transparent`, `currency-bangladeshi`, `minus-small`, `paint-brush`, `plus-small`, `variable`, `wallet`, `arrow-path-rounded-square`
+
 ## [2.0.8](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.7...v2.0.8) - 2022-10-11
 
 - Bumped `heroicons` from 2.0.7 to 2.0.8
-  - Adds `user-minus` icon
+  - Adds new icons: `user-minus`
 
 ## [2.0.7](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.6...v2.0.7) - 2022-10-11
 
