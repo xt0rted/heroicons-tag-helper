@@ -17,6 +17,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/xt0rted/heroicons-tag-helper</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>See https://github.com/xt0rted/heroicons-tag-helper/blob/main/CHANGELOG.md for more info</PackageReleaseNotes>
     <PackageTags>Heroicons;Icons;Tailwind;TailwindCSS;TagHelper;TagHelpers</PackageTags>
