@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [2.0.4](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.3...v2.0.4) - 2022-10-11
+
+- Bumped `heroicons` from 2.0.3 to 2.0.4
+
 ## [2.0.3](https://github.com/xt0rted/heroicons-tag-helper/compare/v1.0.5...v2.0.3) - 2022-10-11
 
 > **Note**: Due to a number of missing/incorrectly named icons the following versions were skipped: v2.0.0, v2.0.1, v2.0.2
