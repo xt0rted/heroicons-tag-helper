@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [2.0.11](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.10...v2.0.11) - 2022-10-11
+
+- Bumped `heroicons` from 2.0.10 to 2.0.11
+  - Adds new icons: `bug-ant`, `eye-dropper`, `pause-circle`, `play-circle`, `power`, `rocket-launch`, `square-2-stack-3d`, `stop-circle`, `trophy`, `tv`, `viewfinder-circle`, `window`
+
 ## [2.0.10](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.9...v2.0.10) - 2022-10-11
 
 - Bumped `heroicons` from 2.0.9 to 2.0.10
