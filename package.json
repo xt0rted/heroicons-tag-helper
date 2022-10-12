@@ -5,7 +5,7 @@
     "test": "markdownlint \"**/*.md\" --ignore node_modules"
   },
   "dependencies": {
-    "heroicons": "2.0.11"
+    "heroicons": "2.0.12"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.32.2"
