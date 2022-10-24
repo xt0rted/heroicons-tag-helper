@@ -53,7 +53,7 @@ jobs:
           FORCE_COLOR: 0
 
       - name: Set up .NET
-        uses: xt0rted/setup-dotnet@v1.4.0
+        uses: xt0rted/setup-dotnet@v1.5.0
 
       - run: npm ci
 
