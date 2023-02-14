@@ -2,9 +2,11 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
   schedule:
     - cron: "0 6 * * 1"
   workflow_dispatch:
@@ -32,7 +34,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["csharp"]
+        language:
+          - csharp
 
     steps:
       - name: Check out repository
