@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Bumped `heroicons` from 2.0.14 to 2.0.15
+
 ## [2.0.14](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.13...v2.0.14) - 2023-02-14
 
 - Bumped `heroicons` from 2.0.13 to 2.0.14
