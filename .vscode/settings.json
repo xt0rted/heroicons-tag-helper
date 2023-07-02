@@ -9,5 +9,6 @@
         "linecap",
         "linejoin",
         "viewbox"
-    ]
+    ],
+    "dotnet.defaultSolution": "HeroiconsTagHelper.sln"
 }

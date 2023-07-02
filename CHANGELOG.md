@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Started targeting .NET 7.0
 - Bumped `heroicons` from 2.0.15 to 2.0.16
 
 ## [2.0.15](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.14...v2.0.15) - 2023-02-14
