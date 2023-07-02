@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>2.0.15</VersionPrefix>
+    <VersionPrefix>2.0.16</VersionPrefix>
     <Authors>Brian Surowiec</Authors>
   </PropertyGroup>
 
