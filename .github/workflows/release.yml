@@ -40,7 +40,6 @@ jobs:
           colored-output: false
           strip-comments-from-global-json: false
           dotnet-version: |
-            3.1.x
             6.0.x
 
       - run: npm ci

@@ -7,7 +7,6 @@
     "clean:bin": "dotnet rimraf **/bin **/obj",
     "build": "dotnet build",
     "test": "dotnet test",
-    "test:31": "dotnet test --framework netcoreapp3.1",
     "test:6": "dotnet test --framework net6.0",
     "test:7": "dotnet test --framework net7.0",
     "pack": "dotnet pack --output ./artifacts",

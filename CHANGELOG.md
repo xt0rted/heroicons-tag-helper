@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+> **Note**:
+> This version drops support for .NET Core 3.1
+
 - Started targeting .NET 7.0
 - Bumped `heroicons` from 2.0.15 to 2.0.16
 
