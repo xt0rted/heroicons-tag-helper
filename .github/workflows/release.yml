@@ -13,7 +13,6 @@ env:
   CONFIGURATION: Release
   DOTNET_NOLOGO: true
   FORCE_COLOR: 3
-  NODE_VERSION: 18
 
 jobs:
   build:
@@ -30,10 +29,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3.6.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-        env:
-          FORCE_COLOR: 0
+          node-version-file: .nvmrc
 
       - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.5.0
