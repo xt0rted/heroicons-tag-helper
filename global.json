@@ -1,14 +1,14 @@
 {
   "sdk": {
-    "version": "6.0.411"
+    "version": "7.0.305"
   },
   "scripts": {
     "clean": "dotnet rimraf artifacts",
     "clean:bin": "dotnet rimraf **/bin **/obj",
     "build": "dotnet build",
     "test": "dotnet test",
-    "test:31": "dotnet test --framework netcoreapp3.1",
     "test:6": "dotnet test --framework net6.0",
+    "test:7": "dotnet test --framework net7.0",
     "pack": "dotnet pack --output ./artifacts",
     "ci": "dotnet r build test pack",
     "watch": "dotnet watch [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] --verbose --project sample"
