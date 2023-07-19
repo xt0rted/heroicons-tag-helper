@@ -24,3 +24,10 @@ jobs:
             "testing",
           ],
         }
+      allowed-packages: |
+        {
+          "nuget": [
+            "rimraf",
+            "run-script",
+          ],
+        }
