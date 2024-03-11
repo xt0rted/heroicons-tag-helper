@@ -58,7 +58,7 @@ jobs:
           path: ./artifacts/*.nupkg
 
       - name: Get changelog entry
-        uses: mindsers/changelog-reader-action@v2.2.2
+        uses: mindsers/changelog-reader-action@v2.2.3
         id: changelog_reader
         with:
           version: ${{ steps.tag_name.outputs.current_version }}
