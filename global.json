@@ -1,6 +1,6 @@
 {
   "sdk": {
-    "version": "7.0.407"
+    "version": "8.0.202"
   },
   "scripts": {
     "clean": "dotnet rimraf artifacts",
@@ -8,9 +8,10 @@
     "build": "dotnet build",
     "test": "dotnet test",
     "test:6": "dotnet test --framework net6.0",
-    "test:7": "dotnet test --framework net7.0",
+    "test:8": "dotnet test --framework net8.0",
     "pack": "dotnet pack --output ./artifacts",
     "ci": "dotnet r build test pack",
-    "watch": "dotnet watch [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] --verbose --project sample"
+    "watch": "dotnet r [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] watch:sample",
+    "watch:sample": "dotnet watch --verbose --project sample"
   }
 }
