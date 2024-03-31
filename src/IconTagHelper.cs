@@ -3,6 +3,7 @@ namespace Tailwind.Heroicons;
 /// <summary>
 /// Tag helper that emits Heroicon icons as inline svg elements.
 /// </summary>
+[HtmlTargetElement("heroicon-micro", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-mini", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-outline", TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement("heroicon-solid", TagStructure = TagStructure.WithoutEndTag)]
@@ -31,15 +32,20 @@ public class IconTagHelper : TagHelper
     /// <inheritdoc/>
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        if (context is null) throw new ArgumentNullException(nameof(context));
-        if (output is null) throw new ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(output);
 
+        var isMicro = context.TagName.Equals("heroicon-micro", StringComparison.OrdinalIgnoreCase);
         var isMini = context.TagName.Equals("heroicon-mini", StringComparison.OrdinalIgnoreCase);
         var isSolid = context.TagName.Equals("heroicon-solid", StringComparison.OrdinalIgnoreCase);
 
         Icon icon;
 
-        if (isMini)
+        if (isMicro)
+        {
+            icon = IconList.Micro(Icon);
+        }
+        else if (isMini)
         {
             icon = IconList.Mini(Icon);
         }
@@ -55,7 +61,7 @@ public class IconTagHelper : TagHelper
         output.TagMode = TagMode.StartTagAndEndTag;
         output.TagName = "svg";
 
-        if (isMini || isSolid)
+        if (isMicro || isMini || isSolid)
         {
             output.Attributes.SetAttribute("fill", "currentColor");
         }
@@ -72,16 +78,29 @@ public class IconTagHelper : TagHelper
 
         if (_settings.IncludeComments)
         {
+            var iconStyle = IconStyle(
+                isMicro,
+                isMini,
+                isSolid);
+
             output.PreElement.AppendHtml("<!-- Heroicon name: ");
-            output.PreElement.Append(IconStyle(isMini, isSolid));
+            output.PreElement.Append(iconStyle);
             output.PreElement.Append(" ");
             output.PreElement.Append(icon.Name);
             output.PreElement.AppendHtmlLine(" -->");
         }
     }
 
-    private static string IconStyle(bool isMini, bool isSolid)
+    private static string IconStyle(
+        bool isMicro,
+        bool isMini,
+        bool isSolid)
     {
+        if (isMicro)
+        {
+            return "micro";
+        }
+
         if (isMini)
         {
             return "mini";

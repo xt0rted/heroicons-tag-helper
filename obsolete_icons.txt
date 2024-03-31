@@ -1,0 +1,8 @@
+arrow-left-on-rectangle
+arrow-right-on-rectangle
+arrow-small-down
+arrow-small-left
+arrow-small-right
+arrow-small-up
+minus-small
+plus-small

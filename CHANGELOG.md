@@ -2,9 +2,18 @@
 
 ## Unreleased
 
+- Bumped `heroicons` from 2.0.18 to 2.1.0
+  - Adds new `micro` style
+  - Renamed the following icons while keeping their old name as an obsolete alias:
+    - Renamed `arrow-left-on-rectangle` to `arrow-left-end-on-rectangle`
+    - Renamed `arrow-right-on-rectangle` to `arrow-right-end-on-rectangle`
+  - All `*-small` icons in the outline and solid sets use the mini set instead and are marked as obsolete
+  - All `*-small` icons in the mini set use the micro set instead and are marked as obsolete
 - Dropped support for .NET 7 which is no longer supported
 - Added support for .NET 8
 - Removed the deprecated `stroke-width` attribute
+- The `IconList` enum contains every icon across all styles and a new `UnsupportedIconException` will be thrown if you try to use an icon that's not supported for the given style
+  - A future version might split this into one enum per style, if you have any feedback on this change please open an issue
 
 ## [2.0.18](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.17...v2.0.18) - 2023-07-02
 
