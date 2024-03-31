@@ -28,13 +28,6 @@ public class IconTagHelper : TagHelper
     [HtmlAttributeName("icon")]
     public IconSymbol Icon { get; set; }
 
-    /// <summary>
-    /// Custom stroke width to use for the outline variants.
-    /// </summary>
-    [Obsolete("Outline icons should be styled with css classes")]
-    [HtmlAttributeName("stroke-width")]
-    public string? StrokeWidth { get; set; }
-
     /// <inheritdoc/>
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
@@ -70,9 +63,7 @@ public class IconTagHelper : TagHelper
         {
             output.Attributes.SetAttribute("fill", "none");
             output.Attributes.SetAttribute("stroke", "currentColor");
-#pragma warning disable CS0618 // Type or member is obsolete
-            output.Attributes.SetAttribute("stroke-width", StrokeWidth ?? icon.StrokeWidth);
-#pragma warning restore CS0618 // Type or member is obsolete
+            output.Attributes.SetAttribute("stroke-width", icon.StrokeWidth);
         }
 
         output.Attributes.SetAttribute("viewbox", icon.ViewBox);

@@ -4,6 +4,7 @@
 
 - Dropped support for .NET 7 which is no longer supported
 - Added support for .NET 8
+- Removed the deprecated `stroke-width` attribute
 
 ## [2.0.18](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.17...v2.0.18) - 2023-07-02
 
