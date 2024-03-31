@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Dropped support for .NET 7 which is no longer supported
+- Added support for .NET 8
+
 ## [2.0.18](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.17...v2.0.18) - 2023-07-02
 
 - Bumped `heroicons` from 2.0.17 to 2.0.18
