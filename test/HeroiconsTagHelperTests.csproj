@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFrameworks>$(_TargetFrameworks)</TargetFrameworks>
     <RootNamespace>Tailwind.Heroicons</RootNamespace>
   </PropertyGroup>
 

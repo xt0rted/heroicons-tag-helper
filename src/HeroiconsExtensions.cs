@@ -14,8 +14,8 @@ public static class HeroiconsExtensions
     /// <exception cref="ArgumentNullException"></exception>
     public static IServiceCollection AddHeroicons(this IServiceCollection services, IConfiguration configuration)
     {
-        if (services is null) throw new ArgumentNullException(nameof(services));
-        if (configuration is null) throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
 
         services.Configure<HeroiconOptions>(configuration.GetSection("Heroicons"));
 
@@ -31,8 +31,8 @@ public static class HeroiconsExtensions
     /// <exception cref="ArgumentNullException"></exception>
     public static IServiceCollection AddHeroicons(this IServiceCollection services, Action<HeroiconOptions> configureOptions)
     {
-        if (services is null) throw new ArgumentNullException(nameof(services));
-        if (configureOptions is null) throw new ArgumentNullException(nameof(configureOptions));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configureOptions);
 
         services.Configure(configureOptions);
 

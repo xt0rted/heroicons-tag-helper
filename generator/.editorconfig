@@ -1,3 +1,6 @@
 [*.cs]
-# RCS1197: Optimize StringBuilder.Append/AppendLine call.
-dotnet_diagnostic.RCS1197.severity = suggestion
+# IDE0079: Remove unnecessary suppression
+dotnet_diagnostic.IDE0079.severity = none
+
+# RS2008: Enable analyzer release tracking
+dotnet_diagnostic.RS2008.severity = none

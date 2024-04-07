@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFrameworks>$(_TargetFrameworks)</TargetFrameworks>
     <AssemblyName>HeroiconsTagHelper</AssemblyName>
     <RootNamespace>Tailwind.Heroicons</RootNamespace>
     <DebugSymbols>true</DebugSymbols>
@@ -34,14 +35,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="../obsolete_icons.txt">
+      <LinkBase>icons</LinkBase>
+    </AdditionalFiles>
+    <AdditionalFiles Include="../node_modules/heroicons/16/solid/*.svg" IconStyle="micro">
+      <LinkBase>icons/micro</LinkBase>
+    </AdditionalFiles>
+    <AdditionalFiles Include="../node_modules/heroicons/20/solid/*.svg" IconStyle="mini">
+      <LinkBase>icons/mini</LinkBase>
+    </AdditionalFiles>
     <AdditionalFiles Include="../node_modules/heroicons/24/outline/*.svg" IconStyle="outline" UsesStroke="true">
       <LinkBase>icons/outline</LinkBase>
     </AdditionalFiles>
     <AdditionalFiles Include="../node_modules/heroicons/24/solid/*.svg" IconStyle="solid">
       <LinkBase>icons/solid</LinkBase>
-    </AdditionalFiles>
-    <AdditionalFiles Include="../node_modules/heroicons/20/solid/*.svg" IconStyle="mini">
-      <LinkBase>icons/mini</LinkBase>
     </AdditionalFiles>
   </ItemGroup>
 

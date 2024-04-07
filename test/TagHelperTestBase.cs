@@ -1,37 +1,36 @@
-namespace Tailwind.Heroicons
+namespace Tailwind.Heroicons;
+
+public abstract class TagHelperTestBase
 {
-    public abstract class TagHelperTestBase
+    protected static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList? attributes = null)
     {
-        protected static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList? attributes = null)
-        {
-            attributes ??= new TagHelperAttributeList();
+        attributes ??= new TagHelperAttributeList();
 
-            return new TagHelperContext(
-                tagName,
-                allAttributes: attributes,
-                items: new Dictionary<object, object>(),
-                uniqueId: Guid.NewGuid().ToString("N"));
-        }
+        return new TagHelperContext(
+            tagName,
+            allAttributes: attributes,
+            items: new Dictionary<object, object>(),
+            uniqueId: Guid.NewGuid().ToString("N"));
+    }
 
-        protected static TagHelperOutput MakeTagHelperOutput(string tagName, TagHelperAttributeList? attributes = null)
-        {
-            attributes ??= new TagHelperAttributeList();
+    protected static TagHelperOutput MakeTagHelperOutput(string tagName, TagHelperAttributeList? attributes = null)
+    {
+        attributes ??= new TagHelperAttributeList();
 
-            return new TagHelperOutput(
-                tagName,
-                attributes: attributes,
-                getChildContentAsync: (_, __) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
-        }
+        return new TagHelperOutput(
+            tagName,
+            attributes: attributes,
+            getChildContentAsync: (_, __) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
+    }
 
-        protected static void AssertAttributeValue(TagHelperAttributeList attributes, string name, string value)
-        {
-            if (attributes is null) throw new ArgumentNullException(nameof(attributes));
+    protected static void AssertAttributeValue(TagHelperAttributeList attributes, string name, string value)
+    {
+        if (attributes is null) throw new ArgumentNullException(nameof(attributes));
 
-            attributes
-                .Count(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-                .ShouldBe(1);
+        attributes
+            .Count(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+            .ShouldBe(1);
 
-            attributes[name].Value.ShouldBe(value);
-        }
+        attributes[name].Value.ShouldBe(value);
     }
 }
