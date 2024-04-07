@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HeroiconsTagHelper": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\src\\HeroiconsTagHelper.csproj"
+    }
+  }
+}
