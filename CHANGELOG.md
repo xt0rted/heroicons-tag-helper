@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [2.1.0](https://github.com/xt0rted/heroicons-tag-helper/compare/v2.0.18...v2.1.0) - 2024-04-07
+
 - Bumped `heroicons` from 2.0.18 to 2.1.0
   - Adds new `micro` style
   - Renamed the following icons while keeping their old name as an obsolete alias:
