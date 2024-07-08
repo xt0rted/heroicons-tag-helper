@@ -53,7 +53,7 @@ jobs:
       - run: dotnet r pack -- --no-build
 
       - name: Publish artifacts
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4.3.4
         with:
           path: ./artifacts/*.nupkg
 
