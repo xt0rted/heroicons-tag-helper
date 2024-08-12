@@ -75,7 +75,7 @@ jobs:
       - run: dotnet r pack -- --no-build --version-suffix $VERSION_SUFFIX
 
       - name: Publish artifacts
-        uses: actions/upload-artifact@v4.3.5
+        uses: actions/upload-artifact@v4.3.6
         with:
           path: ./artifacts/*.nupkg
 
