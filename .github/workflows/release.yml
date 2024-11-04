@@ -64,7 +64,7 @@ jobs:
           version: ${{ steps.tag_name.outputs.current_version }}
 
       - name: Upload release assets
-        uses: softprops/action-gh-release@v2.0.8
+        uses: softprops/action-gh-release@v2.0.9
         id: release_updater
         with:
           body: ${{ steps.changelog_reader.outputs.changes }}
