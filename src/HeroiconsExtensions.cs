@@ -12,6 +12,7 @@ public static class HeroiconsExtensions
     /// <param name="configuration">The configuration available in the application.</param>
     /// <returns>The services.</returns>
     /// <exception cref="ArgumentNullException"></exception>
+    // TODO: Make this better
     public static IServiceCollection AddHeroicons(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
