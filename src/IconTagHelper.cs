@@ -72,7 +72,7 @@ public class IconTagHelper : TagHelper
             output.Attributes.SetAttribute("stroke-width", icon.StrokeWidth);
         }
 
-        output.Attributes.SetAttribute("viewbox", icon.ViewBox);
+        //output.Attributes.SetAttribute("viewbox", icon.ViewBox);
 
         output.Content.AppendHtml(icon.Path);
 
