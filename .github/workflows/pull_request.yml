@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Install Node
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           node-version-file: .nvmrc
 
@@ -35,13 +35,13 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Build version suffix
         run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Set up Node
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           node-version-file: .nvmrc
 
