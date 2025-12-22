@@ -24,10 +24,10 @@ jobs:
         run: echo "current_version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
       - name: Check out repository
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Set up Node
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           node-version-file: .nvmrc
 
@@ -53,7 +53,7 @@ jobs:
       - run: dotnet r pack -- --no-build
 
       - name: Publish artifacts
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6.0.0
         with:
           path: ./artifacts/*.nupkg
 
